@@ -1,1 +1,1 @@
-require("wrice.core.options")
+require("config")
