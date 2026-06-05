@@ -5,6 +5,7 @@
 
 # Repo metadata/docs.
 !.gitignore
+!.gitmodules
 !README.md
 
 # Terminal.
@@ -46,6 +47,10 @@
 # Prompt/theme config.
 !oh-my-posh/
 !oh-my-posh/warice.omp.json
+
+# Submodules.
+!hypr/
+!nvim/
 
 # Explicitly keep standalone repos and sensitive/generated config ignored.
 waybar/weather/config.ini
