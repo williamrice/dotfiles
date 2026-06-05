@@ -1,7 +1,3 @@
-[submodule "hypr"]
-	path = hypr
-	url = git@github.com:williamrice/hyprland-lua-config.git
-
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:williamrice/nvim.git

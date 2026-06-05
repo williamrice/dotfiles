@@ -1,0 +1,12 @@
+require("config.monitors").setup()
+
+local apps = require("config.apps")
+require("config.autostart").setup(apps)
+require("config.keybindings").setup(apps)
+require("config.env").setup()
+require("config.style").setup()
+require("config.rules.workspacerules").setup()
+require("config.rules.windowrules").setup()
+require("config.layout").setup()
+require("config.settings").setup()
+require("config.input").setup()

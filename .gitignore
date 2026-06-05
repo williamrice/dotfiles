@@ -49,10 +49,14 @@
 !oh-my-posh/warice.omp.json
 
 # Submodules.
-!hypr/
 !nvim/
 
-# Explicitly keep standalone repos and sensitive/generated config ignored.
+# Hyprland config is tracked directly in this dotfiles repo.
+!hypr/
+!hypr/**
+hypr/.git/
+
+# Explicitly keep sensitive/generated config ignored.
 waybar/weather/config.ini
 Code/
 google-chrome/
