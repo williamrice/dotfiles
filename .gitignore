@@ -48,9 +48,6 @@
 !oh-my-posh/warice.omp.json
 
 # Explicitly keep standalone repos and sensitive/generated config ignored.
-hypr/
-nvim/
-nvim-old/
 waybar/weather/config.ini
 Code/
 google-chrome/
