@@ -1,0 +1,278 @@
+@define-color color-foreground #f5f5f5;
+@define-color color-background #35383f;
+@define-color color-primary #1793d1;
+@define-color color-warning #ef5350;
+@define-color color-secondary #4a4f5a;
+@define-color color-white #ffffff;
+@define-color color-disabled #666666;
+@define-color color-success #0a9205;
+@define-color color-muted-foreground #b0bec5;
+@define-color color-background-transparent-95 rgba(50, 54, 65, 0.95);
+@define-color color-background-transparent-85 rgba(50, 54, 65, 0.85);
+@define-color color-background-transparent-75 rgba(50, 54, 65, 0.75);
+@define-color color-background-transparent-65 rgba(50, 54, 65, 0.65);
+@define-color color-background-transparent-55 rgba(50, 54, 65, 0.55);
+@define-color color-background-transparent-45 rgba(50, 54, 65, 0.45);
+@define-color color-background-transparent-35 rgba(50, 54, 65, 0.35);
+@define-color color-background-transparent-30 rgba(50, 54, 65, 0.3);
+@define-color color-background-transparent-25 rgba(50, 54, 65, 0.25);
+
+* {
+  font-family:
+    FiraCode Nerd Font Mono,
+    FontAwesome,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+window#waybar {
+  background: @color-background-transparent-35;
+  color: @color-foreground;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid @color-primary;
+  padding: 4px 8px;
+}
+
+window#waybar.hidden {
+  opacity: 0.4;
+}
+
+button {
+  background: transparent;
+  padding: 0 8px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+  color: @color-foreground;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: @background-transparent-85;
+}
+
+#workspaces button {
+  margin: 0 4px;
+  padding: 0 4px;
+  background: transparent;
+  color: @color-foreground;
+}
+
+#workspaces button.active {
+  color: @color-success;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+#workspaces button.visible:not(.active) {
+  color: @color-primary;
+}
+
+#workspaces button.focused {
+  background: @color-secondary;
+}
+
+#workspaces button.urgent {
+  background: @color-warning;
+  color: @color-white;
+}
+
+#workspaces button.empty:not(.active) {
+  color: @color-disabled;
+}
+
+#mode {
+  background: @color-secondary;
+  color: @color-foreground;
+  padding: 0 4px;
+  border-radius: 6px;
+}
+
+#clock,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#idle_inhibitor,
+#mpd,
+#language,
+#keyboard-state,
+#scratchpad,
+#privacy-item {
+  padding: 0 8px;
+  margin: 0 4px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background: @background-transparent-65;
+  color: @color-foreground;
+}
+
+#window,
+#workspaces {
+  margin: 0 0;
+}
+
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 4px;
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 4px;
+}
+
+#clock {
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+#disk {
+}
+
+#network {
+  color: @color-success;
+}
+
+#network.disconnected {
+  color: @color-warning;
+}
+
+#pulseaudio {
+  color: @color-foreground;
+}
+
+#pulseaudio.muted {
+  color: @color-warning;
+  background: @color-muted-foreground;
+}
+
+#wireplumber {
+  background: @color-secondary;
+}
+
+#wireplumber.muted {
+  background: @color-warning;
+}
+
+#custom-media {
+  background: @color-primary;
+  min-width: 120px;
+}
+
+#custom-media.custom-spotify {
+  background: @color-primary;
+}
+
+#custom-media.custom-vlc {
+  background: @color-primary;
+}
+
+#temperature {
+  background: @color-secondary;
+}
+
+#temperature.critical {
+  background: @color-warning;
+}
+
+#tray {
+  background: @background-transparent-65;
+  border-radius: 6px;
+}
+
+#tray > .needs-attention {
+  background: @color-warning;
+}
+
+#idle_inhibitor {
+  color: @color-muted-foreground;
+}
+
+#idle_inhibitor.activated {
+  color: @color-success;
+}
+
+#mpd {
+  background: @color-primary;
+}
+
+#mpd.disconnected,
+#mpd.stopped {
+  background: @color-secondary;
+}
+
+#mpd.paused {
+  background: @color-primary;
+}
+
+#language {
+  background: @color-primary;
+  padding: 0 4px;
+  margin: 0 6px;
+}
+
+#scratchpad {
+  background: @color-background;
+}
+
+#scratchpad.empty {
+  background: transparent;
+}
+
+#privacy-item.screenshare {
+  background: @color-warning;
+}
+
+#privacy-item.audio-in {
+  background: @color-primary;
+}
+
+#privacy-item.audio-out {
+  background: @color-primary;
+}
+#custom-power {
+  font-family:
+    'FiraCode Nerd Font Mono', 'Symbols Nerd Font', 'Symbols Nerd Font Mono',
+    monospace;
+  padding: 0 10px;
+  min-width: 30px;
+}
+
+.weather {
+  font-family: 'Symbols Nerd Font Mono', monospace;
+  padding: 0 10px;
+}
+
+.weather__temp_cold {
+  color: @accent;
+}
+
+.weather_temp_normal {
+  color: @green;
+}
+
+.weather__temp_hot {
+  color: @red;
+}
+
+.weather__airquality__normal {
+  color: @green;
+}
+
+.weather__airquality__unhealthy {
+  color: @red;
+}

@@ -1,0 +1,154 @@
+configuration {
+  modes: "drun,run,window";
+  show-icons: true;
+  drun-display-format: "{name}";
+  display-drun: "Apps";
+  display-run: "Run";
+  display-window: "Windows";
+  icon-theme: "Adwaita";
+  font: "FiraCode Nerd Font Mono 12";
+  disable-history: false;
+  max-history-size: 50;
+  sort: false;
+  kb-mode-next: "Tab,Control+Tab";
+  kb-mode-previous: "ISO_Left_Tab,Control+ISO_Left_Tab";
+  kb-element-next: "";
+  kb-element-prev: "";
+}
+
+@theme "/dev/null"
+
+* {
+  background: rgba(50, 54, 65, 92%);
+  background-soft: rgba(53, 56, 63, 78%);
+  background-strong: rgba(28, 31, 37, 96%);
+  foreground: #f5f5f5;
+  muted: #b0bec5;
+  primary: #1793d1;
+  success: #0a9205;
+  border: rgba(23, 147, 209, 80%);
+  selected: rgba(23, 147, 209, 22%);
+  selected-border: #33ccff;
+  transparent: rgba(0, 0, 0, 0%);
+}
+
+window {
+  location: center;
+  anchor: center;
+  width: 520px;
+  border: 1px;
+  border-radius: 10px;
+  border-color: @border;
+  padding: 12px;
+  background-color: @background;
+}
+
+mainbox {
+  padding: 0px;
+  spacing: 10px;
+  background-color: @transparent;
+  children: [ "inputbar", "listview" ];
+}
+
+inputbar {
+  padding: 12px 14px;
+  spacing: 10px;
+  border: 1px;
+  border-radius: 8px;
+  border-color: rgba(245, 245, 245, 10%);
+  background-color: @background-strong;
+  text-color: @foreground;
+  children: [ "prompt", "entry" ];
+}
+
+prompt {
+  enabled: true;
+  margin: 0px 2px 0px 0px;
+  background-color: @transparent;
+  text-color: @primary;
+}
+
+entry {
+  placeholder: "Search apps";
+  placeholder-color: @muted;
+  cursor: text;
+  background-color: @transparent;
+  text-color: @foreground;
+}
+
+listview {
+  lines: 8;
+  columns: 1;
+  fixed-height: true;
+  dynamic: true;
+  cycle: true;
+  scrollbar: false;
+  spacing: 6px;
+  padding: 2px;
+  background-color: @transparent;
+}
+
+element {
+  orientation: horizontal;
+  children: [ "element-icon", "element-text" ];
+  spacing: 14px;
+  padding: 11px 14px;
+  border: 1px;
+  border-radius: 8px;
+  border-color: @transparent;
+  background-color: @transparent;
+  text-color: @foreground;
+  cursor: pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+  background-color: @transparent;
+  text-color: @foreground;
+}
+
+element selected.normal {
+  border-color: @selected-border;
+  background-color: @selected;
+  text-color: @foreground;
+}
+
+element selected.active {
+  border-color: @success;
+  background-color: rgba(10, 146, 5, 18%);
+  text-color: @foreground;
+}
+
+element selected.urgent {
+  border-color: #ef5350;
+  background-color: rgba(239, 83, 80, 18%);
+  text-color: @foreground;
+}
+
+element-icon {
+  size: 28px;
+  margin: 0px;
+  background-color: @transparent;
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+element-text {
+  background-color: @transparent;
+  text-color: inherit;
+  highlight: @primary;
+  vertical-align: 0.5;
+}
+
+message {
+  padding: 10px;
+  border: 1px;
+  border-radius: 8px;
+  border-color: rgba(245, 245, 245, 10%);
+  background-color: @background-soft;
+}
+
+textbox {
+  background-color: @transparent;
+  text-color: @foreground;
+}

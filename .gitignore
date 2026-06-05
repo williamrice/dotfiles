@@ -1,0 +1,73 @@
+# Deny by default. This keeps app state, browser profiles, tokens, caches,
+# histories, and generated data out of the dotfiles repo unless explicitly
+# allowlisted below.
+*
+
+# Repo metadata/docs.
+!.gitignore
+!README.md
+
+# Terminal.
+!ghostty/
+!ghostty/config.ghostty
+
+# GTK appearance.
+!gtk-3.0/
+!gtk-3.0/settings.ini
+!gtk-4.0/
+!gtk-4.0/settings.ini
+
+# Launchers and notifications.
+!rofi/
+!rofi/config.rasi
+!mako/
+!mako/config
+
+# Bar and session UI.
+!waybar/
+!waybar/config.jsonc
+!waybar/style.css
+!waybar/power.sh
+!waybar/weather/
+!waybar/weather/*.py
+!waybar/weather/config.example.ini
+
+# Logout and lock screens.
+!wlogout/
+!wlogout/layout
+!wlogout/style.css
+!swaylock/
+!swaylock/config
+
+# Legacy sway config, if you still use it as a fallback.
+!sway/
+!sway/config
+
+# Prompt/theme config.
+!oh-my-posh/
+!oh-my-posh/warice.omp.json
+
+# Explicitly keep standalone repos and sensitive/generated config ignored.
+hypr/
+nvim/
+nvim-old/
+waybar/weather/config.ini
+Code/
+google-chrome/
+mozilla/
+discord/
+Zulip/
+Rocket.Chat/
+github-copilot/
+configstore/
+copyq/
+remmina/
+freerdp/
+composer/
+go/
+nvm/
+pulse/
+dconf/
+Docker Desktop/
+docker-secrets-engine/
+caddy/
