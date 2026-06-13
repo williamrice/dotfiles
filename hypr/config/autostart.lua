@@ -9,9 +9,6 @@ function M.setup(apps)
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
-    hl.dispatch(hl.dsp.exec_cmd(apps.teams, { workspace = "6 silent" }))
-    hl.dispatch(hl.dsp.exec_cmd(apps.asana, { workspace = "8 silent" }))
-    hl.dispatch(hl.dsp.exec_cmd(apps.outlook, { workspace = "9 silent" }))
   end)
 end
 
