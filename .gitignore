@@ -27,6 +27,7 @@
 # Bar and session UI.
 !waybar/
 !waybar/config.jsonc
+!waybar/modules.jsonc
 !waybar/style.css
 !waybar/power.sh
 !waybar/weather/
