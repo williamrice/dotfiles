@@ -31,11 +31,12 @@
 }
 
 window#waybar {
-  background: @color-background-transparent-35;
+  background: transparent;
+  background-color: transparent;
   color: @color-foreground;
   transition: all 0.3s ease;
-  border-bottom: 1px solid @color-primary;
-  padding: 4px 8px;
+  border-bottom: none;
+  padding: 6px 8px;
 }
 
 window#waybar.hidden {
@@ -53,7 +54,7 @@ button {
 }
 
 button:hover {
-  background: @background-transparent-85;
+  background: @color-background-transparent-45;
 }
 
 #workspaces button {
@@ -86,13 +87,6 @@ button:hover {
   color: @color-disabled;
 }
 
-#mode {
-  background: @color-secondary;
-  color: @color-foreground;
-  padding: 0 4px;
-  border-radius: 6px;
-}
-
 #clock,
 #cpu,
 #memory,
@@ -103,54 +97,43 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #custom-media,
+#custom-weather,
+#custom-power,
 #tray,
 #idle_inhibitor,
 #mpd,
 #custom-pacman,
+#window,
+#workspaces,
+#mode,
 #language,
 #keyboard-state,
 #scratchpad,
 #privacy-item {
-  padding: 0 8px;
-  margin: 0 4px;
-  border-radius: 6px;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: 1px solid rgba(245, 245, 245, 0.08);
+  border-radius: 8px;
   transition: all 0.3s ease;
-  background: @background-transparent-65;
+  background: @color-background-transparent-55;
   color: @color-foreground;
 }
 
-#window,
 #workspaces {
-  margin: 0 0;
+  padding: 0 6px;
 }
 
 .modules-left > widget > #workspaces {
   margin-left: 4px;
-  margin-right: 10px;
-}
-
-.modules-left > widget > #custom-pacman {
-  margin-right: 10px;
 }
 
 #custom-pacman.updates {
   color: @color-warning;
+  border-color: rgba(239, 83, 80, 0.35);
 }
 
 .modules-right > widget:last-child > #workspaces {
   margin-right: 4px;
-}
-
-#clock {
-}
-
-#cpu {
-}
-
-#memory {
-}
-
-#disk {
 }
 
 #network {
@@ -167,41 +150,21 @@ button:hover {
 
 #pulseaudio.muted {
   color: @color-warning;
-  background: @color-muted-foreground;
-}
-
-#wireplumber {
-  background: @color-secondary;
+  border-color: rgba(239, 83, 80, 0.35);
 }
 
 #wireplumber.muted {
-  background: @color-warning;
+  color: @color-warning;
+  border-color: rgba(239, 83, 80, 0.35);
 }
 
 #custom-media {
-  background: @color-primary;
   min-width: 120px;
 }
 
-#custom-media.custom-spotify {
-  background: @color-primary;
-}
-
-#custom-media.custom-vlc {
-  background: @color-primary;
-}
-
-#temperature {
-  background: @color-secondary;
-}
-
 #temperature.critical {
-  background: @color-warning;
-}
-
-#tray {
-  background: @background-transparent-65;
-  border-radius: 6px;
+  color: @color-warning;
+  border-color: rgba(239, 83, 80, 0.35);
 }
 
 #tray > .needs-attention {
@@ -216,43 +179,31 @@ button:hover {
   color: @color-success;
 }
 
-#mpd {
-  background: @color-primary;
-}
-
 #mpd.disconnected,
 #mpd.stopped {
-  background: @color-secondary;
+  color: @color-muted-foreground;
 }
 
 #mpd.paused {
-  background: @color-primary;
-}
-
-#language {
-  background: @color-primary;
-  padding: 0 4px;
-  margin: 0 6px;
-}
-
-#scratchpad {
-  background: @color-background;
+  color: @color-primary;
 }
 
 #scratchpad.empty {
   background: transparent;
+  border-color: transparent;
 }
 
 #privacy-item.screenshare {
-  background: @color-warning;
+  color: @color-warning;
+  border-color: rgba(239, 83, 80, 0.35);
 }
 
 #privacy-item.audio-in {
-  background: @color-primary;
+  color: @color-primary;
 }
 
 #privacy-item.audio-out {
-  background: @color-primary;
+  color: @color-primary;
 }
 #custom-power {
   font-family:
