@@ -1,153 +1,41 @@
 // -*- mode: jsonc -*-
-{
-  // "layer": "top", // Waybar at top layer
-  // "position": "bottom", // Waybar position (top|bottom|left|right)
-  "height": 36, // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
-  "spacing": 4, // Gaps between modules (4px)
-  // Choose the order of the modules
-  "modules-left": ["hyprland/workspaces", "custom/pacman", "hyprland/window"],
-  "modules-center": [""],
-  "modules-right": [
-    "custom/weather",
-    "mpd",
-    "idle_inhibitor",
-    "pulseaudio",
-    "network",
-    "cpu",
-    "memory",
-    "temperature",
-    "clock",
-    "tray",
-    "custom/power",
-  ],
-  "hyprland/workspaces": {
-    "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m-1\" })'",
-    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m+1\" })'",
-    "format": "{name}: {icon}",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "󰍺",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "󰇮",
-      "urgent": "",
-      "focused": "",
-      "default": "",
-    },
+[
+  {
+    "name": "left",
+    "output": "DP-1",
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 36, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-left": ["hyprland/workspaces", "custom/pacman", "hyprland/window"],
+    "modules-center": [],
+    "modules-right": [
+      "custom/weather",
+      "mpd",
+      "idle_inhibitor",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "temperature",
+      "clock",
+      "tray",
+      "custom/power",
+    ],
+    "include": "/home/warice/.config/waybar/modules.jsonc",
   },
-  "hyprland/window": {
-    "separate-outputs": true,
+  {
+    "name": "right",
+    "output": "DP-2",
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 36, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": [],
+    "modules-right": [],
+    "include": "/home/warice/.config/waybar/modules.jsonc",
   },
-  "mpd": {
-    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-    "format-disconnected": "Disconnected ",
-    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-    "unknown-tag": "N/A",
-    "interval": 5,
-    "consume-icons": {
-      "on": " ",
-    },
-    "random-icons": {
-      "off": "<span color=\"#f53c3c\"></span> ",
-      "on": " ",
-    },
-    "repeat-icons": {
-      "on": " ",
-    },
-    "single-icons": {
-      "on": "1 ",
-    },
-    "state-icons": {
-      "paused": "",
-      "playing": "",
-    },
-    "tooltip-format": "MPD (connected)",
-    "tooltip-format-disconnected": "MPD (disconnected)",
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": "",
-    },
-  },
-  "tray": {
-    // "icon-size": 21,
-    "spacing": 10,
-    // "icons": {
-    //   "blueman": "bluetooth",
-    // }
-  },
-  "clock": {
-    // "timezone": "America/New_York",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%Y-%m-%d}",
-  },
-  "cpu": {
-    "format": "{usage}% ",
-    "tooltip": false,
-  },
-  "memory": {
-    "format": "{}% ",
-  },
-  "temperature": {
-    // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureF}°F {icon}",
-    "format-icons": ["", "", ""],
-  },
-  "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-  },
-  "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": "<span size=\"large\"></span> {icon} {format_source}",
-    "format-muted": "<span size=\"large\"></span> {format_source}",
-    "format-source": "{volume}% <span size=\"large\"></span>",
-    "format-source-muted": "<span color=\"#ef5350\" size=\"large\"></span>",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""],
-    },
-    "on-click": "pavucontrol",
-  },
-  "custom/power": {
-    "format": "\uf011",
-    "tooltip": false,
-    "on-click": "~/.config/waybar/power.sh",
-  },
-  "custom/weather": {
-    "exec": "python ~/.config/waybar/weather/conditions.py",
-    "interval": 900,
-    "max-length": 2000,
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": false,
-  },
-  "custom/pacman": {
-    "exec": "checkupdates | wc -l | awk '{ print $1; print \"\"; if ($1 > 0) print \"updates\" }'",
-    "interval": 60,
-    "format": "󰇚 {}",
-    "tooltip": false,
-  },
-}
+]
