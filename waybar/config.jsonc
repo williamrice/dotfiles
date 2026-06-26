@@ -6,8 +6,8 @@
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": ["hyprland/workspaces", "custom/pacman"],
-  "modules-center": ["hyprland/window"],
+  "modules-left": ["hyprland/workspaces", "custom/pacman", "hyprland/window"],
+  "modules-center": [""],
   "modules-right": [
     "custom/weather",
     "mpd",
@@ -116,10 +116,10 @@
     // "scroll-step": 1, // %, can be a float
     "format": "{volume}% {icon} {format_source}",
     "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
+    "format-bluetooth-muted": "<span size=\"large\"></span> {icon} {format_source}",
+    "format-muted": "<span size=\"large\"></span> {format_source}",
+    "format-source": "{volume}% <span size=\"large\"></span>",
+    "format-source-muted": "<span color=\"#ef5350\" size=\"large\"></span>",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -145,7 +145,7 @@
     "tooltip": false,
   },
   "custom/pacman": {
-    "exec": "checkupdates | wc -l",
+    "exec": "checkupdates | wc -l | awk '{ print $1; print \"\"; if ($1 > 0) print \"updates\" }'",
     "interval": 60,
     "format": "󰇚 {}",
     "tooltip": false,

@@ -106,6 +106,7 @@ button:hover {
 #tray,
 #idle_inhibitor,
 #mpd,
+#custom-pacman,
 #language,
 #keyboard-state,
 #scratchpad,
@@ -123,8 +124,17 @@ button:hover {
   margin: 0 0;
 }
 
-.modules-left > widget:first-child > #workspaces {
+.modules-left > widget > #workspaces {
   margin-left: 4px;
+  margin-right: 10px;
+}
+
+.modules-left > widget > #custom-pacman {
+  margin-right: 10px;
+}
+
+#custom-pacman.updates {
+  color: @color-warning;
 }
 
 .modules-right > widget:last-child > #workspaces {
