@@ -9,7 +9,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": ["hyprland/workspaces", "custom/pacman", "hyprland/window"],
-    "modules-center": [],
+    "modules-center": ["clock"],
     "modules-right": [
       "custom/weather",
       "mpd",
@@ -19,7 +19,6 @@
       "cpu",
       "memory",
       "temperature",
-      "clock",
       "tray",
       "custom/power",
     ],
