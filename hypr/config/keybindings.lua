@@ -82,7 +82,7 @@ function M.setup(apps)
   hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"))
 
   --screenshots
-  hl.bind(mainMod .. " + SHIFT + CTRL + S",
+  hl.bind("Print",
     hl.dsp.exec_cmd("slurp | grim -g - - | tee ~/Pictures/screenshots/$(date +%s).png | wl-copy"))
 
   -- clipboard manager
