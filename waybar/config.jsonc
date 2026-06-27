@@ -32,9 +32,20 @@
     "height": 36, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
-    "modules-center": [],
-    "modules-right": [],
+    "modules-left": ["hyprland/workspaces", "custom/pacman", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": [
+      "custom/weather",
+      "mpd",
+      "idle_inhibitor",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "temperature",
+      "tray",
+      "custom/power",
+    ],
     "include": "/home/warice/.config/waybar/modules.jsonc",
   },
 ]

@@ -83,7 +83,7 @@ function M.setup(apps)
 
   --screenshots
   hl.bind("Print",
-    hl.dsp.exec_cmd("slurp | grim -g - - | tee ~/Pictures/screenshots/$(date +%s).png | wl-copy"))
+    hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh"))
 
   -- clipboard manager
   hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("copyq toggle"))
