@@ -1,0 +1,20 @@
+# Shell Integration
+shell-integration = zsh
+
+# Font Settings
+font-family = "FiraCode Nerd Font Mono"
+font-size = 14
+theme = Carbonfox
+mouse-hide-while-typing = true
+
+# Window Settings
+window-width = 160
+window-height = 40
+window-padding-x = 5
+window-padding-y = 5
+
+# macOS Specific
+macos-titlebar-style = tabs
+
+# Keybindings
+keybind = shift+enter=text:\x1b\r
