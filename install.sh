@@ -38,6 +38,7 @@ else
 fi
 
 git --git-dir="$dotfiles_dir" config status.showUntrackedFiles no
+git --git-dir="$dotfiles_dir" read-tree "$branch"
 
 paths='.zshrc
 .zsh_plugins.txt
@@ -56,6 +57,15 @@ done
 say 'Installing all tracked dotfiles...'
 git --git-dir="$dotfiles_dir" archive "$branch" -- $paths |
   tar -x -C "$HOME"
+
+# Repository documentation and installers live at the repository root but are
+# not home configuration. Their intentional absence must not appear as deletes.
+for path in README.md install.sh install-lite.sh; do
+  if git --git-dir="$dotfiles_dir" ls-files --error-unmatch "$path" >/dev/null 2>&1; then
+    git --git-dir="$dotfiles_dir" --work-tree="$HOME" \
+      update-index --skip-worktree -- "$path"
+  fi
+done
 
 say 'Full dotfiles configuration installed.'
 if [ -d "$backup_dir" ]; then

@@ -38,11 +38,26 @@ else
 fi
 
 git --git-dir="$dotfiles_dir" config status.showUntrackedFiles no
+git --git-dir="$dotfiles_dir" read-tree "$branch"
 
 paths='.zshrc
 .zsh_plugins.txt
 .config/zsh
 .config/nvim'
+
+# The lightweight checkout intentionally omits the rest of the repository.
+# Keep those paths from appearing as deletions in the bare work tree.
+git --git-dir="$dotfiles_dir" ls-files |
+while IFS= read -r path; do
+  git --git-dir="$dotfiles_dir" --work-tree="$HOME" \
+    update-index --skip-worktree -- "$path"
+done
+
+git --git-dir="$dotfiles_dir" ls-tree -r --name-only "$branch" -- $paths |
+while IFS= read -r path; do
+  git --git-dir="$dotfiles_dir" --work-tree="$HOME" \
+    update-index --no-skip-worktree -- "$path"
+done
 
 git --git-dir="$dotfiles_dir" ls-tree -r --name-only "$branch" -- $paths |
 while IFS= read -r path; do
