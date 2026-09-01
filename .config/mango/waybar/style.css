@@ -1,0 +1,43 @@
+/* Reuse the established Hyprland Waybar theme without modifying it. */
+@import url("../../waybar/style.css");
+
+/* Each Waybar has a CSS class matching its config "name". Filter by index
+ * instead of Mango's dynamic .current_output metadata so the split remains
+ * fixed even when every tag is empty. */
+.mango-ultragear #workspaces button:not(.overview):nth-child(n+6),
+.mango-dell #workspaces button:not(.overview):nth-child(-n+5) {
+  min-width: 0;
+  /* GTK still reserves roughly 8px for a zero-width button. Negative margins
+   * cancel that allocation so filtered tags occupy no space in the box. */
+  margin-left: -4px;
+  margin-right: -4px;
+  padding: 0;
+  border: 0;
+  font-size: 0;
+  opacity: 0;
+}
+
+/* Remove the inherited workspace padding at the 5 | 6 split while retaining
+ * padding on the outside edge of each monitor's tag group. */
+.mango-ultragear #workspaces {
+  padding-right: 0;
+}
+
+.mango-dell #workspaces {
+  padding-left: 0;
+}
+
+/* Mango's state name is active; retain the existing visual language. */
+#workspaces button.active {
+  color: @color-success;
+  font-weight: bold;
+}
+
+#layout {
+  padding: 0 10px;
+  margin: 0 5px;
+  border: 1px solid rgba(245, 245, 245, 0.08);
+  border-radius: 8px;
+  background: @color-background-transparent-55;
+  color: @color-primary;
+}

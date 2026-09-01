@@ -1,0 +1,82 @@
+// Waybar configuration used only by MangoWM.
+// The existing ~/.config/waybar configuration remains Hyprland-only.
+[
+  {
+    "name": "mango-ultragear",
+    "output": "DP-1",
+    "layer": "top",
+    "height": 36,
+    "spacing": 4,
+    "modules-left": [
+      "mango/workspaces",
+      "mango/layout",
+      "custom/pacman",
+      "mango/window"
+    ],
+    "modules-center": ["clock"],
+    "modules-right": [
+      "mpd",
+      "idle_inhibitor",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "tray",
+      "custom/power"
+    ],
+    "mango/workspaces": {
+      "format": "{index}",
+      "hide-empty": false,
+      "on-click": "activate",
+      "on-click-right": "toggle",
+      "overview-label": "OVERVIEW"
+    },
+    "mango/layout": {
+      "format": "󰕰 {}"
+    },
+    "mango/window": {
+      "format": "{title}",
+      "icon": false
+    },
+    "include": "/home/warice/.config/waybar/modules.jsonc"
+  },
+  {
+    "name": "mango-dell",
+    "output": "DP-2",
+    "layer": "top",
+    "height": 36,
+    "spacing": 4,
+    "modules-left": [
+      "mango/workspaces",
+      "mango/layout",
+      "custom/pacman",
+      "mango/window"
+    ],
+    "modules-center": ["clock"],
+    "modules-right": [
+      "mpd",
+      "idle_inhibitor",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "tray",
+      "custom/power"
+    ],
+    "mango/workspaces": {
+      "format": "{index}",
+      "hide-empty": false,
+      "on-click": "activate",
+      "on-click-right": "toggle",
+      "overview-label": "OVERVIEW"
+    },
+    "mango/layout": {
+      "format": "󰕰 {}"
+    },
+    "mango/window": {
+      "format": "{title}",
+      "icon": false
+    },
+    "include": "/home/warice/.config/waybar/modules.jsonc"
+  }
+]
