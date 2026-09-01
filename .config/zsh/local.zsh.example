@@ -1,0 +1,7 @@
+# Machine-local commands belong here. Do not put real secrets in this example.
+#
+# Retrieve API keys from Bitwarden or another secret manager.
+# export EXAMPLE_API_KEY='retrieved-at-runtime'
+#
+# Private host aliases also belong in local.zsh:
+# alias private-server='ssh user@host'
