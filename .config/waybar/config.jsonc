@@ -1,0 +1,49 @@
+// -*- mode: jsonc -*-
+[
+  {
+    "name": "left",
+    "output": "DP-1",
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 36, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-left": ["hyprland/workspaces", "custom/pacman", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": [
+      "custom/weather",
+      "mpd",
+      "idle_inhibitor",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "tray",
+      "custom/power",
+    ],
+    "include": "/home/warice/.config/waybar/modules.jsonc",
+  },
+  {
+    "name": "right",
+    "output": "DP-2",
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 36, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-left": ["hyprland/workspaces", "custom/pacman", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": [
+      "custom/weather",
+      "mpd",
+      "idle_inhibitor",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "tray",
+      "custom/power",
+    ],
+    "include": "/home/warice/.config/waybar/modules.jsonc",
+  },
+]

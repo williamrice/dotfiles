@@ -1,0 +1,239 @@
+@define-color color-foreground #f5f5f5;
+@define-color color-background #35383f;
+@define-color color-primary #1793d1;
+@define-color color-warning #ef5350;
+@define-color color-secondary #4a4f5a;
+@define-color color-white #ffffff;
+@define-color color-disabled #666666;
+@define-color color-success #0a9205;
+@define-color color-muted-foreground #b0bec5;
+@define-color color-background-transparent-95 rgba(50, 54, 65, 0.95);
+@define-color color-background-transparent-85 rgba(50, 54, 65, 0.85);
+@define-color color-background-transparent-75 rgba(50, 54, 65, 0.75);
+@define-color color-background-transparent-65 rgba(50, 54, 65, 0.65);
+@define-color color-background-transparent-55 rgba(50, 54, 65, 0.55);
+@define-color color-background-transparent-45 rgba(50, 54, 65, 0.45);
+@define-color color-background-transparent-35 rgba(50, 54, 65, 0.35);
+@define-color color-background-transparent-30 rgba(50, 54, 65, 0.3);
+@define-color color-background-transparent-25 rgba(50, 54, 65, 0.25);
+
+* {
+  font-family:
+    FiraCode Nerd Font Mono,
+    FontAwesome,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+window#waybar {
+  background: transparent;
+  background-color: transparent;
+  color: @color-foreground;
+  transition: all 0.3s ease;
+  border-bottom: none;
+  padding: 6px 8px;
+}
+
+window#waybar.hidden {
+  opacity: 0.4;
+}
+
+button {
+  background: transparent;
+  padding: 0 8px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+  color: @color-foreground;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: @color-background-transparent-45;
+}
+
+#workspaces button {
+  margin: 0 4px;
+  padding: 0 4px;
+  background: transparent;
+  color: @color-foreground;
+}
+
+#workspaces button.active {
+  color: @color-success;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+#workspaces button.visible:not(.active) {
+  color: @color-primary;
+}
+
+#workspaces button.focused {
+  background: @color-secondary;
+}
+
+#workspaces button.urgent {
+  background: @color-warning;
+  color: @color-white;
+}
+
+#workspaces button.empty:not(.active) {
+  color: @color-disabled;
+}
+
+#clock,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#custom-weather,
+#custom-power,
+#tray,
+#idle_inhibitor,
+#mpd,
+#custom-pacman,
+#window,
+#workspaces,
+#mode,
+#language,
+#keyboard-state,
+#scratchpad,
+#privacy-item {
+  padding: 0 10px;
+  margin: 0 5px;
+  border: 1px solid rgba(245, 245, 245, 0.08);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: @color-background-transparent-55;
+  color: @color-foreground;
+}
+
+#workspaces {
+  padding: 0 6px;
+}
+
+.modules-left > widget > #workspaces {
+  margin-left: 4px;
+}
+
+#custom-pacman.updates {
+  color: @color-warning;
+  border-color: rgba(239, 83, 80, 0.35);
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 4px;
+}
+
+#network {
+  color: @color-success;
+}
+
+#network.disconnected {
+  color: @color-warning;
+}
+
+#pulseaudio {
+  color: @color-foreground;
+}
+
+#pulseaudio.muted {
+  color: @color-warning;
+  border-color: rgba(239, 83, 80, 0.35);
+}
+
+#wireplumber.muted {
+  color: @color-warning;
+  border-color: rgba(239, 83, 80, 0.35);
+}
+
+#custom-media {
+  min-width: 120px;
+}
+
+#temperature.critical {
+  color: @color-warning;
+  border-color: rgba(239, 83, 80, 0.35);
+}
+
+#tray > .needs-attention {
+  background: @color-warning;
+}
+
+#idle_inhibitor {
+  color: @color-muted-foreground;
+}
+
+#idle_inhibitor.activated {
+  color: @color-success;
+}
+
+#mpd.disconnected,
+#mpd.stopped {
+  color: @color-muted-foreground;
+}
+
+#mpd.paused {
+  color: @color-primary;
+}
+
+#scratchpad.empty {
+  background: transparent;
+  border-color: transparent;
+}
+
+#privacy-item.screenshare {
+  color: @color-warning;
+  border-color: rgba(239, 83, 80, 0.35);
+}
+
+#privacy-item.audio-in {
+  color: @color-primary;
+}
+
+#privacy-item.audio-out {
+  color: @color-primary;
+}
+#custom-power {
+  font-family:
+    'FiraCode Nerd Font Mono', 'Symbols Nerd Font', 'Symbols Nerd Font Mono',
+    monospace;
+  padding: 0 10px;
+  min-width: 30px;
+}
+
+.weather {
+  font-family: 'Symbols Nerd Font Mono', monospace;
+  padding: 0 10px;
+}
+
+.weather__temp_cold {
+  color: @accent;
+}
+
+.weather_temp_normal {
+  color: @green;
+}
+
+.weather__temp_hot {
+  color: @red;
+}
+
+.weather__airquality__normal {
+  color: @green;
+}
+
+.weather__airquality__unhealthy {
+  color: @red;
+}

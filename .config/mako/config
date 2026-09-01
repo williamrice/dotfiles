@@ -1,0 +1,74 @@
+sort=-time
+layer=top
+anchor=top-right
+
+font=FiraCode Nerd Font Mono 11
+width=420
+height=160
+outer-margin=12,14,0,0
+margin=0,0,8,0
+padding=14,16
+
+background-color=#323641F2
+text-color=#F5F5F5
+border-size=1
+border-color=#1793D1CC
+border-radius=10
+progress-color=over #1793D1BB
+
+icons=1
+icon-path=/usr/share/icons/Adwaita:/usr/share/icons/hicolor:/usr/share/pixmaps
+icon-location=left
+max-icon-size=48
+icon-border-radius=8
+
+markup=1
+actions=1
+history=1
+max-history=50
+max-visible=4
+group-by=app-name,summary
+default-timeout=6000
+ignore-timeout=1
+text-alignment=left
+
+format=<span size="small" foreground="#B0BEC5">%a</span>\n<b>%s</b>\n%b
+
+on-button-left=invoke-default-action
+on-button-middle=exec makoctl restore
+on-button-right=dismiss
+on-touch=invoke-default-action
+
+[grouped]
+format=<span size="small" foreground="#B0BEC5">%a</span>\n<b>%s</b> <span foreground="#1793D1">(%g)</span>\n%b
+
+[hidden]
+background-color=#1C1F25F2
+border-color=#4A4F5ACC
+format=<span foreground="#B0BEC5">%h more notifications</span>
+
+[urgency=low]
+background-color=#323641E6
+border-color=#4A4F5ACC
+default-timeout=3500
+
+[urgency=normal]
+border-color=#1793D1CC
+default-timeout=6000
+
+[urgency=critical]
+layer=overlay
+border-color=#EF5350
+progress-color=over #EF5350BB
+default-timeout=0
+
+[category=mpd]
+group-by=category
+default-timeout=2500
+
+[app-name=Spotify]
+group-by=app-name
+default-timeout=2500
+
+[mode=do-not-disturb]
+invisible=1
