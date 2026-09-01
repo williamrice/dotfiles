@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Launch the browser-based work applications. These commands are compositor
+# independent, so the same launcher works under MangoWM and Hyprland.
+google-chrome-stable --app=https://teams.cloud.microsoft &
+google-chrome-stable --app=https://app.asana.com/ &
+google-chrome-stable --app=https://outlook.office.com/mail/ &

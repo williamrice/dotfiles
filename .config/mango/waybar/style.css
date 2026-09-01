@@ -41,3 +41,12 @@
   background: @color-background-transparent-55;
   color: @color-primary;
 }
+
+/* Font Awesome's power glyph has more empty space on its right side. Keep the
+ * button compact and offset the padding so the visible ring is centered. */
+#custom-power {
+  min-width: 0;
+  padding-left: 9px;
+  padding-right: 8px;
+  margin-right: 0;
+}
