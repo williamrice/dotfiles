@@ -26,6 +26,7 @@ if ok then
 			blade = { "blade-formatter" },
 			php = { "php_cs_fixer" },
 			sh = { "shfmt" },
+			go = { "gofmt" },
 		},
 		format_on_save = {
 			lsp_fallback = true,

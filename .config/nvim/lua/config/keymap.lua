@@ -187,16 +187,16 @@ keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({sel
 
 --treesitter text objects
 
-keymap.set({ "n", "x", "o" }, "af", function()
+keymap.set({ "x", "o" }, "af", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
 end)
-keymap.set({ "n", "x", "o" }, "if", function()
+keymap.set({ "x", "o" }, "if", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
 end)
-keymap.set({ "n", "x", "o" }, "ac", function()
+keymap.set({ "x", "o" }, "ac", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
 end)
-keymap.set({ "n", "x", "o" }, "ic", function()
+keymap.set({ "x", "o" }, "ic", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
 end)
 

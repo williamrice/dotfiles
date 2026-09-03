@@ -13,6 +13,7 @@ if ok then
 		"blade",
 		"c_sharp",
 		"c",
+		"go",
 		"lua",
 		"vim",
 		"vimdoc",
