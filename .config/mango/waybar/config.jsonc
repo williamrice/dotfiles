@@ -11,10 +11,11 @@
       "mango/workspaces",
       "mango/layout",
       "custom/pacman",
-      "mango/window"
+      "mango/window",
     ],
     "modules-center": ["clock"],
     "modules-right": [
+      "custom/weather",
       "mpd",
       "idle_inhibitor",
       "pulseaudio",
@@ -22,23 +23,23 @@
       "cpu",
       "memory",
       "tray",
-      "custom/power"
+      "custom/power",
     ],
     "mango/workspaces": {
       "format": "{index}",
       "hide-empty": false,
       "on-click": "activate",
       "on-click-right": "toggle",
-      "overview-label": "OVERVIEW"
+      "overview-label": "OVERVIEW",
     },
     "mango/layout": {
-      "format": "󰕰 {}"
+      "format": "󰕰 {}",
     },
     "mango/window": {
       "format": "{title}",
-      "icon": false
+      "icon": false,
     },
-    "include": "/home/warice/.config/waybar/modules.jsonc"
+    "include": "/home/warice/.config/waybar/modules.jsonc",
   },
   {
     "name": "mango-dell",
@@ -50,10 +51,11 @@
       "mango/workspaces",
       "mango/layout",
       "custom/pacman",
-      "mango/window"
+      "mango/window",
     ],
     "modules-center": ["clock"],
     "modules-right": [
+      "custom/weather",
       "mpd",
       "idle_inhibitor",
       "pulseaudio",
@@ -61,22 +63,22 @@
       "cpu",
       "memory",
       "tray",
-      "custom/power"
+      "custom/power",
     ],
     "mango/workspaces": {
       "format": "{index}",
       "hide-empty": false,
       "on-click": "activate",
       "on-click-right": "toggle",
-      "overview-label": "OVERVIEW"
+      "overview-label": "OVERVIEW",
     },
     "mango/layout": {
-      "format": "󰕰 {}"
+      "format": "󰕰 {}",
     },
     "mango/window": {
       "format": "{title}",
-      "icon": false
+      "icon": false,
     },
-    "include": "/home/warice/.config/waybar/modules.jsonc"
-  }
+    "include": "/home/warice/.config/waybar/modules.jsonc",
+  },
 ]

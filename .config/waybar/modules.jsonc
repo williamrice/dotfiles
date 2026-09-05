@@ -107,7 +107,7 @@
     "on-click": "~/.local/bin/power-menu",
   },
   "custom/weather": {
-    "exec": "python ~/.config/waybar/weather/conditions.py",
+    "exec": "waybar-open-weather",
     "interval": 900,
     "max-length": 2000,
     "return-type": "json",

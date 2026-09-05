@@ -4,8 +4,8 @@
 /* Each Waybar has a CSS class matching its config "name". Filter by index
  * instead of Mango's dynamic .current_output metadata so the split remains
  * fixed even when every tag is empty. */
-.mango-ultragear #workspaces button:not(.overview):nth-child(n+6),
-.mango-dell #workspaces button:not(.overview):nth-child(-n+5) {
+.mango-ultragear #workspaces button:not(.overview):nth-child(n + 6),
+.mango-dell #workspaces button:not(.overview):nth-child(-n + 5) {
   min-width: 0;
   /* GTK still reserves roughly 8px for a zero-width button. Negative margins
    * cancel that allocation so filtered tags occupy no space in the box. */
@@ -31,6 +31,28 @@
 #workspaces button.active {
   color: @color-success;
   font-weight: bold;
+}
+
+/* Mango adds .urgent when a workspace contains a window requesting attention.
+ * Reserve a little space after its number and blink only the notification dot. */
+@keyframes mango-workspace-urgent {
+  from {
+    background-image: radial-gradient(circle, #ff8c00 0%, #ff8c00 45%, transparent 55%);
+  }
+
+  to {
+    background-image: radial-gradient(circle, transparent 0%, transparent 100%);
+  }
+}
+
+#workspaces button.urgent {
+  background-color: transparent;
+  background-image: radial-gradient(circle, #ff8c00 0%, #ff8c00 45%, transparent 55%);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 8px 8px;
+  padding-right: 14px;
+  animation: mango-workspace-urgent 1s steps(2, start) infinite alternate;
 }
 
 #layout {

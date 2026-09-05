@@ -73,7 +73,7 @@ end, { desc = "toggle dap ui" })
 ----------------------
 -- Code copy
 keymap.set("n", "<leader>cr", "<CMD>Lazy reload codecopy.nvim<CR>", { desc = "reload code copy" })
-keymap.set("n", "<leader>cc", "<CMD>CodeCopy<CR>", { desc = "copy code" })
+keymap.set({ "n", "v" }, "<leader>cc", "<CMD>CodeCopy<CR>", { desc = "copy code" })
 
 -- copilot
 keymap.set("n", "<leader>ct", function()
@@ -220,7 +220,18 @@ keymap.set("n", "<leader>fh", fzf.help_tags, { desc = "List available help tags.
 keymap.set("n", "<leader>gb", "<cmd>GitBlameToggle<cr>", { desc = "Toggle Git blame view." })
 
 -- diffview
-keymap.set("n", "<leader>gv", "<cmd>DiffviewOpen<cr>", { desc = "Open Git diff view." })
+keymap.set("n", "<leader>gv", function()
+	local buffer_path = vim.api.nvim_buf_get_name(0)
+	local start_path = buffer_path ~= "" and vim.fs.dirname(buffer_path) or vim.uv.cwd()
+	local git_root = vim.fs.root(start_path, ".git")
+
+	if not git_root then
+		vim.notify("The current buffer is not inside a Git repository.", vim.log.levels.WARN)
+		return
+	end
+
+	require("diffview").open({ "-C" .. git_root })
+end, { desc = "Open Git diff view." })
 keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { desc = "Open Git history for all files." })
 keymap.set("n", "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", { desc = "Open Git history for current file." })
 keymap.set("n", "<leader>gc", function()
