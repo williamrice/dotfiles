@@ -1,23 +1,19 @@
-local gh = require("config.utils").gh
-vim.pack.add({
-	gh("mfussenegger/nvim-dap"),
-	gh("leoluz/nvim-dap-go"),
-	gh("rcarriga/nvim-dap-ui"),
-	gh("theHamsta/nvim-dap-virtual-text"),
-	gh("nvim-neotest/nvim-nio"),
-	gh("jbyuki/one-small-step-for-vimkind"),
-	gh("nicholasmata/nvim-dap-cs"),
-	gh("jay-babu/mason-nvim-dap.nvim"),
-	gh("Cliffback/netcoredbg-macOS-arm64.nvim"),
-})
-
 local dap = require("dap")
 local ui = require("dapui")
 
-require("dapui").setup()
-require("dap-cs").setup()
----@diagnostic disable-next-line: redundant-parameter
-require("netcoredbg-macOS-arm64").setup(dap)
+ui.setup()
+require("dap-go").setup({ delve = { path = vim.fn.stdpath("data") .. "/mason/bin/dlv" } })
+
+local netcoredbg = vim.fn.stdpath("data") .. "/mason/bin/netcoredbg"
+dap.adapters.coreclr = { type = "executable", command = netcoredbg, args = { "--interpreter=vscode" } }
+dap.configurations.cs = {
+	{
+		type = "coreclr", request = "launch", name = "Launch .NET assembly", cwd = "${workspaceFolder}",
+		program = function()
+			return vim.fn.input("Path to DLL: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
+		end,
+	},
+}
 
 --- @diagnostic disable-next-line: missing-fields
 require("nvim-dap-virtual-text").setup({
@@ -48,15 +44,15 @@ dap.adapters.nlua = function(callback, config)
 	callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
 end
 
-dap.listeners.before.attach.dapui_config = function()
+dap.listeners.before.attach.warice_dapui = function()
 	ui.open()
 end
-dap.listeners.before.launch.dapui_config = function()
+dap.listeners.before.launch.warice_dapui = function()
 	ui.open()
 end
-dap.listeners.before.event_terminated.dapui_config = function()
+dap.listeners.before.event_terminated.warice_dapui = function()
 	ui.close()
 end
-dap.listeners.before.event_exited.dapui_config = function()
+dap.listeners.before.event_exited.warice_dapui = function()
 	ui.close()
 end

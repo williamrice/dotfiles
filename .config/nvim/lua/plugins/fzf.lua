@@ -1,9 +1,3 @@
-local gh = require("config.utils").gh
-
-vim.pack.add({
-	gh("ibhagwan/fzf-lua"),
-})
-
 require("fzf-lua").setup({
 	lsp = {
 		code_actions = {

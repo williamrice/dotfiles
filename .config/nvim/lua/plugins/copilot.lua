@@ -1,13 +1,4 @@
-local gh = require("config.utils").gh
-
-vim.pack.add({
-	gh("zbirenbaum/copilot.lua"),
-})
-
-local ok, copilot = pcall(require, "copilot")
-
-if ok then
-	copilot.setup({
+require("copilot").setup({
 		panel = {
 			enabled = true,
 			auto_refresh = false,
@@ -47,15 +38,12 @@ if ok then
 			svn = false,
 			cvs = false,
 			["."] = false,
-			sh = function()
-				if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), "^%.env.*") then
-					-- disable for .env files
-					return false
-				end
-				return true
-			end,
 		},
+		should_attach = function(bufnr, bufname)
+			return vim.bo[bufnr].buflisted
+				and vim.bo[bufnr].buftype == ""
+				and not vim.fs.basename(bufname):match("^%.env")
+		end,
 		copilot_node_command = "node",
 		server_opts_overrides = {},
 	})
-end
