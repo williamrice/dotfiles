@@ -1,6 +1,5 @@
 return {
-	filetypes = { "html", "css", "javascript", "typescript" },
-	root_markers = { "tailwind.config.js", "tailwind.config.ts" },
+	filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "twig", "php" },
 	settings = {
 		tailwindCSS = {
 			includeLanguages = {

@@ -6,7 +6,6 @@ g.mapleader = " "
 g.maplocalleader = " "
 
 local opt = vim.opt
-opt.encoding = "UTF-8"
 opt.clipboard = "unnamedplus"
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.backspace = "indent,eol,start"
@@ -48,5 +47,5 @@ opt.hlsearch = false
 
 opt.undofile = true
 opt.updatetime = 250
-opt.timeoutlen = 5000
+opt.timeoutlen = 500
 opt.inccommand = "split"

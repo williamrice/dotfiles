@@ -1,0 +1,5 @@
+require("nvim-autopairs").setup({ disable_filetype = { "vim" } })
+require("nvim-ts-autotag").setup({})
+require("ibl").setup({})
+require("nvim-surround").setup({})
+require("colorizer").setup({ parsers = { names = { enable = false } } })

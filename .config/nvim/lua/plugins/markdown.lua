@@ -1,14 +1,4 @@
-local gh = require("config.utils").gh
-
-vim.pack.add({
-	gh("MeanderingProgrammer/render-markdown.nvim"),
-	gh("nvim-tree/nvim-web-devicons"),
-})
-
-local ok, render_markdown = pcall(require, "render-markdown")
-
-if ok then
-	render_markdown.setup({
+require("render-markdown").setup({
 		-- Render markdown when opening file
 		enabled = true,
 		-- Max file size to render (100KB default)
@@ -48,4 +38,5 @@ if ok then
 			icons = { "●", "○", "◆", "◇" },
 		},
 	})
-end
+
+require("image").setup({ processor = "magick_cli" })
