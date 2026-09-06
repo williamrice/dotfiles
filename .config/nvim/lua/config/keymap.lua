@@ -105,6 +105,34 @@ map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnost
 map("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer diagnostics" })
 map("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols" })
 map("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix" })
+map("n", "<leader>xc", function()
+	local line = vim.api.nvim_win_get_cursor(0)[1]
+	local diagnostics = vim.diagnostic.get(0, { lnum = line - 1 })
+	if #diagnostics == 0 then
+		vim.notify("No diagnostics on the current line", vim.log.levels.INFO)
+		return
+	end
+
+	table.sort(diagnostics, function(a, b)
+		return (a.severity or vim.diagnostic.severity.HINT) < (b.severity or vim.diagnostic.severity.HINT)
+	end)
+
+	local messages = vim.tbl_map(function(diagnostic)
+		return diagnostic.message:gsub("%s*\n%s*", " ")
+	end, diagnostics)
+	local filename = vim.api.nvim_buf_get_name(0)
+	filename = filename == "" and "[No Name]" or vim.fn.fnamemodify(filename, ":.")
+	local text = string.format(
+		"File: %s\nLine: %d\nDiagnostic%s:\n%s",
+		filename,
+		line,
+		#messages == 1 and "" or "s",
+		table.concat(messages, "\n")
+	)
+
+	vim.fn.setreg("+", text)
+	vim.notify("Copied line diagnostics to the clipboard")
+end, { desc = "Copy line diagnostics" })
 
 local dap = require("dap")
 map("n", "<F5>", dap.continue, { desc = "Debug continue" })
