@@ -1,11 +1,20 @@
-local M = { changed = {} }
-
 vim.api.nvim_create_autocmd("PackChanged", {
 	group = vim.api.nvim_create_augroup("warice_pack_changed", { clear = true }),
 	callback = function(event)
 		local data = event.data
-		if data and data.spec and (data.kind == "install" or data.kind == "update") then
-			M.changed[data.spec.name] = data.kind
+		if not data or not data.spec or data.spec.name ~= "nvim-treesitter" or data.kind ~= "update" then
+			return
+		end
+
+		if not data.active then
+			vim.cmd.packadd("nvim-treesitter")
+		end
+
+		local ok, err = pcall(function()
+			require("nvim-treesitter").update(nil, { summary = true }):wait(300000)
+		end)
+		if not ok then
+			error("Failed to update Tree-sitter parsers after updating nvim-treesitter:\n" .. tostring(err))
 		end
 	end,
 })
@@ -56,5 +65,3 @@ vim.pack.add({
 	gh("windwp/nvim-ts-autotag"),
 	gh("zbirenbaum/copilot.lua"),
 })
-
-return M
