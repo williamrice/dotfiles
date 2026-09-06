@@ -1,6 +1,7 @@
 local map = vim.keymap.set
 local fzf = require("fzf-lua")
 
+-- Basic editing
 map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 map("n", "<leader>nh", "<cmd>nohlsearch<cr>", { desc = "Clear search highlights" })
 map("n", "x", '"_x', { desc = "Delete character without yanking" })
@@ -11,6 +12,7 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 map("n", "n", "nzzzv", { desc = "Next search result" })
 map("n", "N", "Nzzzv", { desc = "Previous search result" })
 
+-- Windows, tabs, and buffers
 map("n", "<leader>sv", "<C-w>v", { desc = "Vertical split" })
 map("n", "<leader>sh", "<C-w>s", { desc = "Horizontal split" })
 map("n", "<leader>se", "<C-w>=", { desc = "Equalize splits" })
@@ -27,6 +29,7 @@ map("n", "<leader>tc", "<cmd>BufferLinePickClose<cr>", { desc = "Pick buffer to 
 map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous buffer" })
 
+-- Formatting
 map({ "n", "v" }, "<leader>cf", function()
 	require("conform").format({ lsp_format = "fallback", timeout_ms = 3000 })
 end, { desc = "Format file or range" })
@@ -41,6 +44,7 @@ map("n", "<leader>sf", function()
 end, { desc = "Save without formatting" })
 map("n", "<leader>ct", "<cmd>FormatToggle<cr>", { desc = "Toggle buffer format-on-save" })
 
+-- LSP and diagnostics
 map("n", "ge", vim.diagnostic.open_float, { desc = "Line diagnostics" })
 map("n", "[d", function()
 	vim.diagnostic.jump({ count = -1, float = true })
@@ -60,6 +64,7 @@ map("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
 map({ "n", "v" }, "<leader>ca", fzf.lsp_code_actions, { desc = "Code action" })
 map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename symbol" })
 
+-- Files and search
 map("n", "<leader>ff", fzf.files, { desc = "Find files" })
 map("n", "<leader>fs", fzf.live_grep, { desc = "Live grep" })
 map("n", "<leader>fb", fzf.grep_cword, { desc = "Grep word" })
@@ -71,11 +76,13 @@ end, { desc = "Find config files" })
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
 map("n", "<leader>E", "<cmd>NvimTreeFindFile<cr>", { desc = "Reveal current file" })
 
+-- Git and code review
 map("n", "<leader>gv", "<cmd>CodeDiff<cr>", { desc = "Review repository changes" })
 map("n", "<leader>gS", "<cmd>CodeDiff --staged<cr>", { desc = "Review staged changes" })
 map("n", "<leader>gf", "<cmd>CodeDiff file HEAD<cr>", { desc = "Review current file" })
 map("n", "<leader>gh", "<cmd>CodeDiff history %<cr>", { desc = "Current file history" })
 
+-- Search and replace
 map("n", "<leader>S", function()
 	require("grug-far").toggle_instance({ instanceName = "search-replace" })
 end, { desc = "Toggle search and replace" })
@@ -86,6 +93,7 @@ map("n", "<leader>sp", function()
 	require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
 end, { desc = "Replace in file" })
 
+-- Terminal Git client
 map("n", "<leader>lg", function()
 	local path = vim.api.nvim_buf_get_name(0)
 	local root = vim.fs.root(path ~= "" and path or vim.uv.cwd(), ".git") or vim.uv.cwd()
@@ -94,6 +102,7 @@ map("n", "<leader>lg", function()
 	vim.cmd.startinsert()
 end, { desc = "LazyGit" })
 
+-- AI assistance
 map({ "n", "v" }, "<leader>cc", "<cmd>CodeCopy<cr>", { desc = "Copy code" })
 map("n", "<leader>cp", "<cmd>Copilot panel<cr>", { desc = "Copilot panel" })
 map("n", "<leader>cs", "<cmd>Copilot status<cr>", { desc = "Copilot status" })
@@ -101,6 +110,7 @@ map("n", "<leader>cT", function()
 	require("copilot.suggestion").toggle_auto_trigger()
 end, { desc = "Toggle Copilot suggestions" })
 
+-- Diagnostic lists and clipboard
 map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics" })
 map("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer diagnostics" })
 map("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols" })
@@ -134,6 +144,21 @@ map("n", "<leader>xc", function()
 	vim.notify("Copied line diagnostics to the clipboard")
 end, { desc = "Copy line diagnostics" })
 
+-- Snippets
+map({ "i", "s" }, "<C-f>", function()
+	local luasnip = require("luasnip")
+	if luasnip.jumpable(1) then
+		luasnip.jump(1)
+	end
+end, { desc = "Next snippet field" })
+map({ "i", "s" }, "<C-b>", function()
+	local luasnip = require("luasnip")
+	if luasnip.jumpable(-1) then
+		luasnip.jump(-1)
+	end
+end, { desc = "Previous snippet field" })
+
+-- Debugging
 local dap = require("dap")
 map("n", "<F5>", dap.continue, { desc = "Debug continue" })
 map("n", "<F10>", dap.step_over, { desc = "Debug step over" })
@@ -148,6 +173,7 @@ map("n", "<leader>dl", function()
 	require("osv").launch({ port = 8086 })
 end, { desc = "Launch Lua debug server" })
 
+-- Tree-sitter text objects
 map({ "x", "o" }, "af", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
 end, { desc = "Outer function" })
@@ -161,6 +187,7 @@ map({ "x", "o" }, "ic", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
 end, { desc = "Inner class" })
 
+-- Markdown and package information
 map("n", "<leader>md", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle Markdown rendering" })
 map("n", "<leader>mp", "<cmd>RenderMarkdown preview<cr>", { desc = "Preview Markdown" })
 map("n", "<leader>ns", require("package-info").show, { desc = "Show dependency versions" })

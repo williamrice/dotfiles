@@ -16,10 +16,3 @@ local ok, react_snippets = pcall(require, "react-snippets")
 if ok then
 	react_snippets.setup({ readonly_props = false })
 end
-
-vim.keymap.set({ "i", "s" }, "<C-f>", function()
-	if luasnip.jumpable(1) then luasnip.jump(1) end
-end, { desc = "Next snippet field" })
-vim.keymap.set({ "i", "s" }, "<C-b>", function()
-	if luasnip.jumpable(-1) then luasnip.jump(-1) end
-end, { desc = "Previous snippet field" })
