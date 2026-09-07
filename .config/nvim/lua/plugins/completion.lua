@@ -27,6 +27,12 @@ cmp.setup({
 		documentation = { auto_show = true, auto_show_delay_ms = 300 },
 		list = { selection = { preselect = false, auto_insert = false } },
 	},
-	signature = { enabled = true },
+	signature = {
+		enabled = true,
+		trigger = {
+			show_on_insert = true,
+			show_on_accept = true,
+		},
+	},
 	fuzzy = { implementation = "rust" },
 })
