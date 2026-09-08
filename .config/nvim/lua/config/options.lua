@@ -5,6 +5,9 @@ g.loaded_netrwPlugin = 1
 g.mapleader = " "
 g.maplocalleader = " "
 
+-- supports shl files to use bashls lsp
+vim.filetype.add({ extension = { shl = "sh" } })
+
 local opt = vim.opt
 opt.clipboard = "unnamedplus"
 opt.completeopt = { "menu", "menuone", "noselect" }
