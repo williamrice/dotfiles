@@ -8,7 +8,10 @@ local netcoredbg = vim.fn.stdpath("data") .. "/mason/bin/netcoredbg"
 dap.adapters.coreclr = { type = "executable", command = netcoredbg, args = { "--interpreter=vscode" } }
 dap.configurations.cs = {
 	{
-		type = "coreclr", request = "launch", name = "Launch .NET assembly", cwd = "${workspaceFolder}",
+		type = "coreclr",
+		request = "launch",
+		name = "Launch .NET assembly",
+		cwd = "${workspaceFolder}",
 		program = function()
 			return vim.fn.input("Path to DLL: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
 		end,
