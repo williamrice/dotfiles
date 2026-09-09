@@ -3,6 +3,6 @@ set -euo pipefail
 
 # Launch the browser-based work applications. These commands are compositor
 # independent, so the same launcher works under MangoWM and Hyprland.
-google-chrome-stable --app=https://teams.cloud.microsoft &
-google-chrome-stable --app=https://app.asana.com/ &
-google-chrome-stable --app=https://outlook.office.com/mail/ &
+google-chrome-stable --app=https://teams.cloud.microsoft </dev/null >/dev/null 2>&1 &
+google-chrome-stable --app=https://app.asana.com/ </dev/null >/dev/null 2>&1 &
+google-chrome-stable --app=https://outlook.office.com/mail/ </dev/null >/dev/null 2>&1 &
