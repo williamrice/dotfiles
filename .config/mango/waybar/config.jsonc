@@ -39,6 +39,15 @@
       "format": "{title}",
       "icon": false,
     },
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": "",
+      },
+      "tooltip-format-activated": "Idle inhibition active\nDisplays will stay on",
+      "tooltip-format-deactivated": "Idle inhibition inactive\nDisplays turn off after 10 minutes",
+    },
     "include": "/home/warice/.config/waybar/modules.jsonc",
   },
   {
@@ -78,6 +87,15 @@
     "mango/window": {
       "format": "{title}",
       "icon": false,
+    },
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": "",
+      },
+      "tooltip-format-activated": "Idle inhibition active\nDisplays will stay on",
+      "tooltip-format-deactivated": "Idle inhibition inactive\nDisplays turn off after 10 minutes",
     },
     "include": "/home/warice/.config/waybar/modules.jsonc",
   },
