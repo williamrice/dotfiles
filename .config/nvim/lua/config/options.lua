@@ -5,6 +5,21 @@ g.loaded_netrwPlugin = 1
 g.mapleader = " "
 g.maplocalleader = " "
 
+if vim.fn.has("wsl") == 1 then
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = "clip.exe",
+			["*"] = "clip.exe",
+		},
+		paste = {
+			["+"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+			["*"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))',
+		},
+		cache_enabled = 0,
+	}
+end
+
 -- supports shl files to use bashls lsp
 vim.filetype.add({ extension = { shl = "sh" } })
 
