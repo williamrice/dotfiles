@@ -34,6 +34,6 @@
     "text" : "Reboot",
     "keybind" : "r"
 }
-{ "label": "hypr-reload",    "text": "Reload Hyprland",   "action": "hyprctl reload",                                             "keybind": "R" }
+{ "label": "mango-reload", "text": "Reload Mango", "action": "mmsg dispatch reload_config", "keybind": "R" }
 { "label": "waybar-restart", "text": "Restart Waybar","action": "bash -lc 'pkill waybar; nohup waybar >/dev/null 2>&1 &'",    "keybind": "W" }
 { "label": "audio-restart",  "text": "Restart Audio", "action": "systemctl --user restart wireplumber pipewire pipewire-pulse","keybind": "A" }

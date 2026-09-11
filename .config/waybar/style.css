@@ -237,3 +237,76 @@ button:hover {
 .weather__airquality__unhealthy {
   color: @red;
 }
+
+
+/* Each Waybar has a CSS class matching its config "name". Filter by index
+ * instead of Mango's dynamic .current_output metadata so the split remains
+ * fixed even when every tag is empty. */
+.mango-ultragear #workspaces button:not(.overview):nth-child(n + 6),
+.mango-dell #workspaces button:not(.overview):nth-child(-n + 5) {
+  min-width: 0;
+  /* GTK still reserves roughly 8px for a zero-width button. Negative margins
+   * cancel that allocation so filtered tags occupy no space in the box. */
+  margin-left: -4px;
+  margin-right: -4px;
+  padding: 0;
+  border: 0;
+  font-size: 0;
+  opacity: 0;
+}
+
+/* Remove the inherited workspace padding at the 5 | 6 split while retaining
+ * padding on the outside edge of each monitor's tag group. */
+.mango-ultragear #workspaces {
+  padding-right: 0;
+}
+
+.mango-dell #workspaces {
+  padding-left: 0;
+}
+
+/* Mango's state name is active; retain the existing visual language. */
+#workspaces button.active {
+  color: @color-success;
+  font-weight: bold;
+}
+
+/* Mango adds .urgent when a workspace contains a window requesting attention.
+ * Reserve a little space after its number and blink only the notification dot. */
+@keyframes mango-workspace-urgent {
+  from {
+    background-image: radial-gradient(circle, #ff8c00 0%, #ff8c00 45%, transparent 55%);
+  }
+
+  to {
+    background-image: radial-gradient(circle, transparent 0%, transparent 100%);
+  }
+}
+
+#workspaces button.urgent {
+  background-color: transparent;
+  background-image: radial-gradient(circle, #ff8c00 0%, #ff8c00 45%, transparent 55%);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 8px 8px;
+  padding-right: 14px;
+  animation: mango-workspace-urgent 1s steps(2, start) infinite alternate;
+}
+
+#layout {
+  padding: 0 10px;
+  margin: 0 5px;
+  border: 1px solid rgba(245, 245, 245, 0.08);
+  border-radius: 8px;
+  background: @color-background-transparent-55;
+  color: @color-primary;
+}
+
+/* Font Awesome's power glyph has more empty space on its right side. Keep the
+ * button compact and offset the padding so the visible ring is centered. */
+#custom-power {
+  min-width: 0;
+  padding-left: 9px;
+  padding-right: 8px;
+  margin-right: 0;
+}

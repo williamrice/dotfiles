@@ -1,26 +1,4 @@
 {
-  "hyprland/workspaces": {
-    "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m-1\" })'",
-    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m+1\" })'",
-    "format": "{name}: {icon}",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "󰍺",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "󰇮",
-      "urgent": "",
-      "focused": "",
-      "default": "",
-    },
-  },
-  "hyprland/window": {
-    "separate-outputs": true,
-  },
   "mpd": {
     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
     "format-disconnected": "Disconnected ",
