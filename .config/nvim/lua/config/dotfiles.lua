@@ -37,8 +37,66 @@ function M.lazygit()
 		return
 	end
 	local paths = vim.split(vim.trim(result.stdout), "\n", { plain = true })
-	vim.cmd("botright 15new")
-	vim.fn.jobstart({ "lazygit", "--work-tree", paths[1], "--git-dir", paths[2] }, { term = true, cwd = paths[1] })
+	local function dimensions()
+		local width = math.max(1, math.floor(vim.o.columns * 0.9) - 2)
+		local height = math.max(1, math.floor(vim.o.lines * 0.85) - 2)
+		return {
+			relative = "editor",
+			width = width,
+			height = height,
+			col = math.max(0, math.floor((vim.o.columns - width - 2) / 2)),
+			row = math.max(0, math.floor((vim.o.lines - height - 2) / 2)),
+		}
+	end
+
+	local buf = vim.api.nvim_create_buf(false, true)
+	local opts = vim.tbl_extend("force", dimensions(), {
+		style = "minimal",
+		border = "rounded",
+		title = " LazyGit ",
+		title_pos = "center",
+	})
+	local win = vim.api.nvim_open_win(buf, true, opts)
+	vim.bo[buf].bufhidden = "wipe"
+	local group = vim.api.nvim_create_augroup("lazygit_float_" .. buf, { clear = true })
+	vim.api.nvim_create_autocmd("VimResized", {
+		group = group,
+		callback = function()
+			if vim.api.nvim_win_is_valid(win) then
+				vim.api.nvim_win_set_config(win, dimensions())
+			end
+		end,
+	})
+	vim.api.nvim_create_autocmd("BufWipeout", {
+		group = group,
+		buffer = buf,
+		once = true,
+		callback = function()
+			vim.api.nvim_del_augroup_by_id(group)
+		end,
+	})
+	local function close()
+		-- Deleting a displayed buffer can leave its window showing a replacement
+		-- buffer. Close our float first; bufhidden=wipe also cleans up the terminal.
+		if vim.api.nvim_win_is_valid(win) then
+			vim.api.nvim_win_close(win, true)
+		end
+		if vim.api.nvim_buf_is_valid(buf) then
+			vim.api.nvim_buf_delete(buf, { force = true })
+		end
+	end
+	local job = vim.fn.jobstart({ "lazygit", "--work-tree", paths[1], "--git-dir", paths[2] }, {
+		term = true,
+		cwd = paths[1],
+		on_exit = function()
+			vim.schedule(close)
+		end,
+	})
+	if job <= 0 then
+		close()
+		vim.notify("Failed to start LazyGit", vim.log.levels.ERROR)
+		return
+	end
 	vim.cmd.startinsert()
 end
 
