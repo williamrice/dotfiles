@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+# Neovim-only Git discovery for the detached dotfiles working tree.
+# Never install this wrapper on the shell's global PATH.
+set -euo pipefail
+
+git_bin=${NVIM_DOTFILES_GIT:?Neovim must supply the real Git executable}
+dotfiles_home=${NVIM_DOTFILES_HOME:?Neovim must supply the dotfiles working tree}
+args=("$@")
+discovery_dir=$PWD
+command_name=
+
+# Honor explicit repositories and Git's global -C/-c options. Repeated -C
+# arguments are relative to the preceding directory, just as in Git itself.
+while (($#)); do
+    case "$1" in
+        --git-dir|--git-dir=*|--work-tree|--work-tree=*|--bare)
+            exec "$git_bin" "${args[@]}" ;;
+        -C)
+            (($# >= 2)) || exec "$git_bin" "${args[@]}"
+            if [[ -n $2 ]]; then
+                discovery_dir=$(cd -- "$discovery_dir" && cd -- "$2" && pwd -P) || exec "$git_bin" "${args[@]}"
+            fi
+            shift 2 ;;
+        -c|--config-env)
+            (($# >= 2)) || exec "$git_bin" "${args[@]}"
+            shift 2 ;;
+        --*) shift ;;
+        -*) exec "$git_bin" "${args[@]}" ;;
+        *) command_name=$1; break ;;
+    esac
+done
+
+if [[ -n ${GIT_DIR:-} || -n ${GIT_WORK_TREE:-} ]]; then
+    exec "$git_bin" "${args[@]}"
+fi
+
+# Normal repositories (including linked worktrees) always win.
+if "$git_bin" -C "$discovery_dir" rev-parse --absolute-git-dir >/dev/null 2>&1; then
+    exec "$git_bin" "${args[@]}"
+fi
+
+# Do not turn arbitrary home subdirectories into dotfiles repositories.
+case "$discovery_dir/" in
+    "$dotfiles_home/"|"$dotfiles_home/.config/"*|"$dotfiles_home/.local/bin/"*) ;;
+    *) exec "$git_bin" "${args[@]}" ;;
+esac
+[[ -f $dotfiles_home/.dotfiles/HEAD ]] || exec "$git_bin" "${args[@]}"
+case "$command_name" in
+    ''|init|clone) exec "$git_bin" "${args[@]}" ;;
+    config)
+        for arg in "$@"; do
+            case "$arg" in
+                --global|--system|--file|-f) exec "$git_bin" "${args[@]}" ;;
+            esac
+        done ;;
+esac
+
+# CodeDiff overrides status.showUntrackedFiles with -uall. Keep its ordinary
+# project behavior, but do not enumerate the home directory for dotfiles.
+if [[ $command_name == status ]]; then
+    filtered=()
+    in_status=0
+    for arg in "${args[@]}"; do
+        if [[ $in_status == 1 && $arg == -- ]]; then
+            filtered+=(--untracked-files=no)
+            in_status=2
+        fi
+        if [[ $in_status == 1 && ( $arg == -u* || $arg == --untracked-files* ) ]]; then
+            continue
+        fi
+        filtered+=("$arg")
+        [[ $arg != status || $in_status != 0 ]] || in_status=1
+    done
+    [[ $in_status != 1 ]] || filtered+=(--untracked-files=no)
+    args=("${filtered[@]}")
+elif [[ $command_name == ls-files ]]; then
+    # CodeDiff also asks for a separate list of untracked files when diffing
+    # revisions. Returning an empty list avoids that recursive scan entirely.
+    for arg in "$@"; do
+        [[ $arg != -- ]] || break
+        [[ $arg != --others && $arg != -o ]] || exit 0
+    done
+fi
+
+exec "$git_bin" --git-dir="$dotfiles_home/.dotfiles" --work-tree="$dotfiles_home" "${args[@]}"

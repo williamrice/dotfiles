@@ -98,13 +98,7 @@ map("n", "<leader>sp", function()
 end, { desc = "Replace in file" })
 
 -- Terminal Git client
-map("n", "<leader>lg", function()
-	local path = vim.api.nvim_buf_get_name(0)
-	local root = vim.fs.root(path ~= "" and path or vim.uv.cwd(), ".git") or vim.uv.cwd()
-	vim.cmd("botright 15new")
-	vim.fn.jobstart({ "lazygit", "--path", root }, { term = true })
-	vim.cmd.startinsert()
-end, { desc = "LazyGit" })
+map("n", "<leader>lg", require("config.dotfiles").lazygit, { desc = "LazyGit" })
 
 -- AI assistance
 map({ "n", "v" }, "<leader>cc", "<cmd>CodeCopy<cr>", { desc = "Copy code" })
