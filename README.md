@@ -13,14 +13,16 @@ curl -fsSL https://raw.githubusercontent.com/williamrice/dotfiles/main/install-l
 
 ## Full install
 
-Installs every tracked home configuration file:
+Installs tracked home configuration files, scripts in `~/.local/bin`, and assets
+in `~/Pictures`:
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/williamrice/dotfiles/main/install.sh | sh
 ```
 
 Existing tracked paths are copied to `~/.dotfiles-backup/` before replacement.
-Machine-local secrets are not installed.
+Only Git-tracked files are installed; unrelated scripts, pictures, and
+machine-local secrets are not installed.
 
 ## Git alias
 

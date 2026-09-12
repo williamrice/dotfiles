@@ -44,7 +44,9 @@ paths='.zshrc
 .zsh_plugins.txt
 .gitconfig
 .gtkrc-2.0
-.config'
+.config
+.local/bin
+Pictures'
 
 git --git-dir="$dotfiles_dir" ls-tree -r --name-only "$branch" -- $paths |
 while IFS= read -r path; do
