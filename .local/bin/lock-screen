@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# GTKLock -d returns only after ext-session-lock confirms that locking succeeded.
+# Serializing launch prevents two simultaneous idle/suspend/shortcut requests.
+exec 9>"${XDG_RUNTIME_DIR:?}/gtklock-launch.lock"
+flock 9
+if ! pgrep -u "$(id -u)" -x gtklock >/dev/null; then
+    /usr/bin/gtklock -d -c /home/warice/.config/gtklock/config.ini 9>&-
+fi
+if [[ ${1:-} == --screen-off ]]; then
+    /usr/bin/wlr-dpms off
+fi

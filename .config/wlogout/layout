@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "swaylock -f",
+    "action" : "/home/warice/.local/bin/lock-screen",
     "text" : "Lock",
     "keybind" : "l"
 }
