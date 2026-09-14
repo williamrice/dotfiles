@@ -1,7 +1,5 @@
 # Linux-specific configuration.
 
-export GTK_THEME=Adwaita:dark
-
 if [[ -r /usr/share/zsh-antidote/antidote.zsh ]]; then
   source /usr/share/zsh-antidote/antidote.zsh
 fi
