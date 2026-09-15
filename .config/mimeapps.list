@@ -1,0 +1,17 @@
+[Default Applications]
+text/html=firefox-developer-edition.desktop
+x-scheme-handler/http=firefox-developer-edition.desktop
+x-scheme-handler/https=firefox-developer-edition.desktop
+x-scheme-handler/about=firefox-developer-edition.desktop
+x-scheme-handler/unknown=firefox-developer-edition.desktop
+x-scheme-handler/jetbrains=jetbrainsd.desktop
+x-scheme-handler/mailto=firefox-developer-edition.desktop
+application/sql=code.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+application/vnd.iccprofile=code.desktop
+
+[Added Associations]
+text/csv=code.desktop;
+application/sql=code.desktop;
+image/png=com.google.Chrome.desktop;
+application/vnd.iccprofile=code.desktop;
