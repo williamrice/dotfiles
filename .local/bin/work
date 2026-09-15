@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Launch the browser-based work applications.
-google-chrome-stable --app=https://teams.cloud.microsoft </dev/null >/dev/null 2>&1 &
-google-chrome-stable --app=https://app.asana.com/ </dev/null >/dev/null 2>&1 &
-google-chrome-stable --app=https://outlook.office.com/mail/ </dev/null >/dev/null 2>&1 &
+# Keep browser-based work applications isolated in the signed-in work profile.
+chrome=(google-chrome-stable --profile-directory="Profile 2")
+
+"${chrome[@]}" --app=https://teams.cloud.microsoft </dev/null >/dev/null 2>&1 &
+"${chrome[@]}" --app=https://app.asana.com/ </dev/null >/dev/null 2>&1 &
+"${chrome[@]}" --app=https://outlook.office.com/mail/ </dev/null >/dev/null 2>&1 &
