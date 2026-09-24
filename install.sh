@@ -59,7 +59,7 @@ warn_dependencies() {
     warn_tool rofi 'application launcher'
     warn_tool waybar 'desktop bar'
     warn_tool copyq 'clipboard manager'
-    warn_tool gtklock 'password lock screen'
+    warn_tool swaylock 'password lock screen'
     warn_tool swayidle 'automatic idle and suspend locking'
     warn_tool wlr-dpms 'monitor sleep and wake'
     warn_tool flock 'serialized lock-screen launches (util-linux)'
