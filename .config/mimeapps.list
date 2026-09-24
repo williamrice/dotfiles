@@ -11,7 +11,7 @@ x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 application/vnd.iccprofile=code.desktop
 
 [Added Associations]
-text/csv=code.desktop;
+text/csv=libreoffice-calc.desktop;code.desktop;
 application/sql=code.desktop;
 image/png=com.google.Chrome.desktop;
 application/vnd.iccprofile=code.desktop;
