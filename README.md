@@ -27,7 +27,7 @@ machine-local secrets are not installed.
 Both installers warn when tools used by the configuration are missing from the
 current `PATH`, including Zsh, Neovim, eza, fzf, ripgrep (`rg`), fd, lazygit,
 git-delta (`delta`), Node/npm, and native plugin build/download tools. The full
-installer also checks Oh My Posh and, on Linux, desktop tools such as GTKLock,
+installer also checks Oh My Posh and, on Linux, desktop tools such as swaylock,
 swayidle, Waybar, and the screenshot utilities. These warnings do not block
 installation or install packages; install the tools for the features you use.
 Git and tar remain mandatory for the installer itself. These are availability
