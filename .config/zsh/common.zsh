@@ -6,6 +6,7 @@ path=(
   "$HOME/.symfony5/bin"
   "$HOME/.local/share/nvim/mason/bin"
   "$HOME/.local/bin"
+  "$HOME/.lando/bin"
   $path
 )
 
