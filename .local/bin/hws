@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+repo="${1:-$PWD}"
+
+if [[ ! -d "$repo" ]]; then
+	echo "Directory does not exist: $repo" >&2
+	exit 1
+fi
+
+repo="$(realpath "$repo")"
+label="${2:-$(basename "$repo")}"
+
+for cmd in herdr jq nvim; do
+	if ! command -v "$cmd" >/dev/null 2>&1; then
+		echo "Required command not found: $cmd" >&2
+		exit 1
+	fi
+done
+
+echo "Creating Herdr workspace: $label"
+echo "Root: $repo"
+
+#
+# Workspace
+#
+# Creating a workspace automatically creates:
+#   - the workspace
+#   - tab 1
+#   - the root pane
+#
+created="$(
+	herdr workspace create \
+		--cwd "$repo" \
+		--label "$label" \
+		--no-focus
+)"
+
+workspace_id="$(
+	jq -r '.result.workspace.workspace_id' <<<"$created"
+)"
+
+scratch_tab="$(
+	jq -r '.result.tab.tab_id' <<<"$created"
+)"
+
+#
+# 1: scratch
+#
+herdr tab rename "$scratch_tab" scratch >/dev/null
+
+#
+# 2: nvim
+#
+created="$(
+	herdr tab create \
+		--workspace "$workspace_id" \
+		--cwd "$repo" \
+		--label nvim \
+		--no-focus
+)"
+
+nvim_pane="$(
+	jq -r '.result.root_pane.pane_id' <<<"$created"
+)"
+
+herdr pane run "$nvim_pane" "nvim ." >/dev/null
+
+#
+# 3: agent
+#
+created="$(
+	herdr tab create \
+		--workspace "$workspace_id" \
+		--cwd "$repo" \
+		--label agent \
+		--no-focus
+)"
+
+#
+# 4: git
+#
+herdr tab create \
+	--workspace "$workspace_id" \
+	--cwd "$repo" \
+	--label git \
+	--no-focus >/dev/null
+
+#
+# Start on scratch
+#
+herdr workspace focus "$workspace_id" >/dev/null
+herdr tab focus "$scratch_tab" >/dev/null
+
+echo "Workspace ready:"
+echo
+echo "  1  scratch"
+echo "  2  nvim"
+echo "  3  agent"
+echo "  4  git"
+echo
+echo "Ctrl+B + 1..4 to switch tabs."
