@@ -16,7 +16,6 @@ fi
 
 path=(
   "/opt/homebrew/opt/libpq/bin"
-  "$HOME/.lando/bin"
   "$HOME/.dotnet/tools"
   "$HOME/.composer/vendor/bin"
   "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
