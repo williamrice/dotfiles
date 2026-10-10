@@ -1,6 +1,7 @@
 require("config.options")
 require("config.dotfiles").setup()
 require("config.packages")
+require("config.pack_sync").sync()
 require("config.plugins")
 require("config.autocmds")
 require("config.keymap")
