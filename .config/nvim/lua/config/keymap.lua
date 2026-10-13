@@ -12,7 +12,7 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 map("n", "n", "nzzzv", { desc = "Next search result" })
 map("n", "N", "Nzzzv", { desc = "Previous search result" })
 
-map("n", "<leader>pu", "<cmd>PackUpdate<cr>", { desc = "Update plugins" })
+map("n", "<leader>pu", "<cmd>FzfPack<cr>", { desc = "Update plugins" })
 
 -- Windows, tabs, and buffers
 map("n", "<leader>sv", "<C-w>v", { desc = "Vertical split" })
