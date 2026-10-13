@@ -61,6 +61,7 @@ vim.pack.add({
 	gh("stevearc/conform.nvim"),
 	gh("theHamsta/nvim-dap-virtual-text"),
 	gh("vuki656/package-info.nvim"),
+	gh("williamrice/fzf-pack.nvim"),
 	gh("windwp/nvim-autopairs"),
 	gh("windwp/nvim-ts-autotag"),
 	gh("zbirenbaum/copilot.lua"),

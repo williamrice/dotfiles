@@ -39,6 +39,10 @@
       "rev": "6995a3f8ba256a7a9949747ffbdf5a88eb8a3697",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
+    "fzf-pack.nvim": {
+      "rev": "cbc7c15f86fb78cc9fdf61ac490fcfef4dc92d91",
+      "src": "https://github.com/williamrice/fzf-pack.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "fd780920613e541cbdfac41bf711583ed49f9249",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
