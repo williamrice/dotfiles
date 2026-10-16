@@ -1,0 +1,12 @@
+[global]
+source = [
+    "./environment.toml",
+    "./appearance.toml",
+    "./layouts.toml",
+    "./behavior.toml",
+    "./input.toml",
+    "./autostart.toml",
+    "./bindings.toml",
+    "./monitors.toml",
+    "./rules.toml",
+]

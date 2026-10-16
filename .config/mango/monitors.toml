@@ -1,0 +1,17 @@
+[[rule.monitor_rule]]
+name = "^DP-1$"
+width = 2560
+height = 1440
+refresh = 179.959
+x = 0
+y = 0
+scale = 1
+
+[[rule.monitor_rule]]
+name = "^DP-2$"
+width = 2560
+height = 1440
+refresh = 165.080
+x = 2560
+y = 0
+scale = 1

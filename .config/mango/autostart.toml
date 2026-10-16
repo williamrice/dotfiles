@@ -1,0 +1,10 @@
+[global]
+
+exec_once = [
+    "~/.local/bin/set-dark-mode",
+    "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP QT_QPA_PLATFORMTHEME QT_QPA_PLATFORM",
+    "systemctl --user start app-dev.lizardbyte.app.Sunshine.service",
+    "swayidle -w -C ~/.config/mango/swayidle.conf",
+    "waybar",
+    "copyq",
+]

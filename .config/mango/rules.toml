@@ -1,0 +1,65 @@
+# Tag assignments
+
+[[rule.tag_rule]]
+id = 1
+monitor_name = "DP-1"
+no_hide = 1
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 2
+monitor_name = "DP-1"
+no_hide = 1
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 3
+monitor_name = "DP-1"
+no_hide = 1
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 4
+monitor_name = "DP-1"
+no_hide = 1
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 5
+monitor_name = "DP-1"
+no_hide = 1
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 6
+monitor_name = "DP-2"
+no_hide = 1
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 7
+monitor_name = "DP-2"
+no_hide = 1
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 8
+monitor_name = "DP-2"
+no_hide = 1
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 9
+monitor_name = "DP-2"
+no_hide = 1
+layout_name = "tile"
+
+# Layer animations
+
+[[rule.layer_rule]]
+animation_type_open = "zoom"
+layer_name = "rofi"
+
+[[rule.layer_rule]]
+animation_type_close = "zoom"
+layer_name = "rofi"
