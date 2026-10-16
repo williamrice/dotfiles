@@ -25,3 +25,11 @@ Do not use for: refactoring, writing scripts from scratch, debugging business lo
 3. `query-docs` with the selected library ID and what to look up in the library's documentation (not single words), scoped to a single concept. If the question spans multiple distinct concepts (e.g. routing and auth and caching), make a separate `query-docs` call per concept with the same library ID, unless the question is about how the concepts interact — combined queries dilute ranking and return shallow results for each topic
 4. Answer using the fetched docs
 <!-- context7 -->
+
+## Comment standards
+
+- Use comments selectively and professionally.
+- Comment only to explain non-obvious constraints, rationale, or workarounds; label useful sections; or provide documentation appropriate to the project.
+- Do not narrate edits, migrations, verification, or assistant activity in source/config comments.
+- Do not restate obvious code, settings, filenames, or syntax.
+- Keep optional improvement notes separate from active configuration.
