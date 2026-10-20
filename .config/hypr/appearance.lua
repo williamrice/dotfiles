@@ -6,8 +6,8 @@ hl.config({
         border_size = 2,
         resize_on_border = true,
         col = {
-            active_border = "rgba(32cd32ff)",
-            inactive_border = "rgba(444444ff)",
+            active_border = "rgba(83d3f7ff)",
+            inactive_border = "rgba(a7d5f52e)",
         },
     },
     master = {
@@ -17,7 +17,8 @@ hl.config({
     },
     dwindle = { preserve_split = true },
     decoration = {
-        rounding = 6,
+        rounding = 15,
+        rounding_power = 2.0,
         active_opacity = 1.0,
         inactive_opacity = 1.0,
         blur = { enabled = true, size = 8, passes = 3, vibrancy = 0.12 },

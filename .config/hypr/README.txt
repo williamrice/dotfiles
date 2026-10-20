@@ -7,7 +7,7 @@ do not also enable the same helpers through UWSM or systemd.
 
 Configuration
   hyprland.lua    loads the modules with dofile so reload rereads every file
-  appearance.lua master layout, green borders, 5/10px gaps, 6px rounding
+  appearance.lua master layout, icy-blue borders, 5/10px gaps, 15px rounding
   monitors.lua   DP-1 1440p/180Hz, DP-2 1440p/165Hz; workspaces 1-5 / 6-10
   input.lua      US keyboard, repeat timing, trackpad, Qt environment
   rules.lua      Steam to 10, Discord to 6, Docker Desktop to 4
