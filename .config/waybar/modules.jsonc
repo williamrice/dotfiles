@@ -1,101 +1,106 @@
 {
-  "mpd": {
-    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-    "format-disconnected": "Disconnected ",
-    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-    "unknown-tag": "N/A",
-    "interval": 5,
-    "consume-icons": {
-      "on": " ",
-    },
-    "random-icons": {
-      "off": "<span color=\"#f53c3c\"></span> ",
-      "on": " ",
-    },
-    "repeat-icons": {
-      "on": " ",
-    },
-    "single-icons": {
-      "on": "1 ",
-    },
-    "state-icons": {
-      "paused": "",
-      "playing": "",
-    },
-    "tooltip-format": "MPD (connected)",
-    "tooltip-format-disconnected": "MPD (disconnected)",
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "all-outputs": false,
+    "sort-by-number": true,
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "DP-1": [1, 2, 3, 4, 5],
+      "DP-2": [6, 7, 8, 9, 10]
+    }
   },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": "",
-    },
-  },
-  "tray": {
-    // "icon-size": 21,
-    "spacing": 10,
-    // "icons": {
-    //   "blueman": "bluetooth",
-    // }
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 32,
+    "separate-outputs": true,
+    "icon": false,
+    "tooltip": false
   },
   "clock": {
-    // "timezone": "America/New_York",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%Y-%m-%d}",
+    "format": "{:%H:%M  ·  %a, %b %d}",
+    "format-alt": "{:%A, %B %d · %Y}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
   },
-  "cpu": {
-    "format": "{usage}% ",
-    "tooltip": false,
-  },
-  "memory": {
-    "format": "{}% ",
-  },
-  "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-  },
-  "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": "<span size=\"large\"></span> {icon} {format_source}",
-    "format-muted": "<span size=\"large\"></span> {format_source}",
-    "format-source": "{volume}% <span size=\"large\"></span>",
-    "format-source-muted": "<span color=\"#ef5350\" size=\"large\"></span>",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""],
-    },
-    "on-click": "pavucontrol",
-  },
-  "custom/power": {
-    "format": "\uf011",
-    "tooltip": false,
-    "on-click": "~/.local/bin/power-menu",
+  "mpris": {
+    "format": "{player_icon} {title}",
+    "format-paused": "",
+    "format-stopped": "",
+    "max-length": 24,
+    "player-icons": { "default": "󰎈" },
+    "tooltip-format": "{player}: {artist} — {title}\nClick: play/pause · Right-click: next"
   },
   "custom/weather": {
     "exec": "waybar-open-weather",
     "interval": 900,
-    "max-length": 2000,
     "return-type": "json",
     "format": "{}",
-    "tooltip": false,
+    "max-length": 22,
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "󰂯 {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "headphone": "󰋋",
+      "headset": "󰋎",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 2,
+    "tooltip-format": "{desc}\nVolume: {volume}% · Click: audio settings\nRight-click: mute · Scroll: volume",
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "network": {
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰈀",
+    "format-linked": "󰈀",
+    "format-disconnected": "󰤭",
+    "tooltip-format-wifi": "{essid} · {signalStrength}%\n{ifname} · {ipaddr}",
+    "tooltip-format-ethernet": "Wired connection\n{ifname} · {ipaddr}",
+    "tooltip-format-disconnected": "Network disconnected"
+  },
+  "group/system": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 200,
+      "transition-left-to-right": false,
+      "children-class": "system-detail"
+    },
+    "modules": ["custom/system", "cpu", "memory", "custom/pacman", "idle_inhibitor"]
+  },
+  "custom/system": {
+    "format": "󰒓",
+    "tooltip-format": "System details\nHover for CPU, memory, updates and idle control"
+  },
+  "cpu": {
+    "format": "󰻠 {usage}%",
+    "interval": 5,
+    "tooltip-format": "CPU usage: {usage}%"
+  },
+  "memory": {
+    "format": "󰍛 {}%",
+    "interval": 5,
+    "tooltip-format": "Memory: {used:0.1f} / {total:0.1f} GiB"
   },
   "custom/pacman": {
-    "exec": "checkupdates | wc -l | awk '{ print $1; print \"\"; if ($1 > 0) print \"updates\" }'",
-    "interval": 60,
-    "format": "󰇚 {}",
-    "tooltip": false,
+    // Read the existing package database; package synchronization stays manual.
+    "exec": "pacman -Qu | wc -l",
+    "interval": 1800,
+    "format": "󰏗 {}",
+    "tooltip-format": "Available updates from the last package database sync"
   },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": { "activated": "󰅶", "deactivated": "󰾪" },
+    "tooltip-format-activated": "Stay awake enabled · Click to allow idle locking",
+    "tooltip-format-deactivated": "Idle locking enabled · Click to stay awake"
+  },
+  "tray": { "icon-size": 16, "spacing": 10 },
+  "custom/power": {
+    "format": "󰐥",
+    "tooltip-format": "Session and power controls",
+    "on-click": "~/.local/bin/power-menu",
+    "on-click-right": "~/.local/bin/lock-screen"
+  }
 }

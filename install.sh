@@ -81,7 +81,7 @@ warn_dependencies() {
     warn_tool google-chrome-stable 'browser shortcut and work launcher'
     warn_tool hyprpicker 'color-picker shortcut'
     warn_tool waybar-open-weather 'weather widget'
-    warn_tool checkupdates 'Arch update widget (pacman-contrib)'
+    warn_tool pacman 'cached Arch update count'
   fi
 
   if [ "$missing_tools" -eq 1 ]; then

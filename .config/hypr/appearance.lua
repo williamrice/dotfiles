@@ -20,7 +20,7 @@ hl.config({
         rounding = 6,
         active_opacity = 1.0,
         inactive_opacity = 1.0,
-        blur = { enabled = false },
+        blur = { enabled = true, size = 8, passes = 3, vibrancy = 0.12 },
         shadow = { enabled = false },
     },
     animations = { enabled = false },
@@ -34,4 +34,12 @@ hl.window_rule({
     name = "ignore-maximize",
     match = { class = ".*" },
     suppress_event = "maximize",
+})
+
+-- Skip fully transparent gaps so blur follows the three panel shapes.
+hl.layer_rule({
+    name = "waybar-glass",
+    match = { namespace = "waybar" },
+    blur = true,
+    ignore_alpha = 0.2,
 })

@@ -30,6 +30,17 @@ Manual locking also powers off displays; input wakes the locked display.
 Waybar's idle inhibitor prevents idle locking; explicit locking still works.
 No automatic system suspend is configured on this desktop.
 
+Waybar
+Three shared glass panels use a blue slate palette with Hyprland layer blur.
+Left: workspaces and a bounded window title. Center: time and date.
+Right: active media, weather, audio, network, system drawer, tray and power.
+Hover the gear for CPU, memory, cached package updates and the idle inhibitor.
+Click audio for settings, right-click to mute, or scroll to change volume.
+Click power for the menu; right-click it to lock. Media hides when paused.
+Package counts use the existing pacman database and do not sync it automatically.
+Module order lives in waybar/config.jsonc; options in waybar/modules.jsonc;
+panel colors and transparency in waybar/style.css.
+
 Shortcuts
   Super+Return / E / W     terminal / files / Firefox Developer Edition
   Super+Shift+W           Chrome
