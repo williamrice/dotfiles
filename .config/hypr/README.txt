@@ -16,7 +16,7 @@ Configuration
   autostart.lua  Waybar, Hypridle, Hyprpaper, Mako, CopyQ, Polkit, Sunshine
   hyprlock.conf  dark blue lock screen, Arch logo, clock and password field
   hypridle.conf  lock after 10 minutes; power off only once locked; suspend lock
-  hyprpaper.conf Arch logo wallpaper on all outputs
+  hyprpaper.conf blue space wallpaper on all outputs
 
 Master layout
 The main window takes the left 55%; other windows stack vertically on the right.
