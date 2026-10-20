@@ -6,7 +6,7 @@
 @define-color edge rgba(167, 213, 245, 0.18);
 
 * {
-  font-family: "FiraCode Nerd Font Mono", "Symbols Nerd Font Mono", sans-serif;
+  font-family: "Inter", "Noto Sans", "Symbols Nerd Font Mono", "Noto Color Emoji", sans-serif;
   font-size: 13px;
   min-height: 0;
   border: none;
@@ -109,8 +109,16 @@ window#waybar.empty #window {
   border: none;
 }
 
+#clock,
+#workspaces button,
+#cpu,
+#memory,
+#custom-pacman {
+  font-family: "FiraCode Nerd Font Mono", "Symbols Nerd Font Mono", "Noto Color Emoji", monospace;
+}
+
 #clock {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 #mpris,
@@ -127,6 +135,8 @@ window#waybar.empty #window {
 }
 
 #mpris {
+  font-family: "Inter", "Noto Sans", "Noto Color Emoji", "Symbols Nerd Font Mono", sans-serif;
+  font-weight: 500;
   color: @accent;
 }
 

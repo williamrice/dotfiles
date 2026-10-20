@@ -32,6 +32,10 @@ No automatic system suspend is configured on this desktop.
 
 Waybar
 Three shared glass panels use a blue slate palette with Hyprland layer blur.
+Inter handles text; FiraCode Nerd Font Mono keeps clocks and numbers aligned.
+Symbols Nerd Font Mono supplies icons; Noto Color Emoji supplies emoji fallback.
+Install extra/inter-font and extra/noto-fonts-emoji from the official Arch repos.
+Without Inter, text falls back to the already installed Noto Sans.
 Left: workspaces and a bounded window title. Center: time and date.
 Right: active media, weather, audio, network, system drawer, tray and power.
 Hover the gear for CPU, memory, cached package updates and the idle inhibitor.
