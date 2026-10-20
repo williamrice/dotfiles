@@ -1,16 +1,15 @@
-// Mango desktop bars for both monitors.
+// Hyprland desktop bars for both monitors.
 [
   {
-    "name": "mango-ultragear",
+    "name": "hyprland-ultragear",
     "output": "DP-1",
     "layer": "top",
     "height": 36,
     "spacing": 4,
     "modules-left": [
-      "mango/workspaces",
-      "mango/layout",
+      "hyprland/workspaces",
       "custom/pacman",
-      "mango/window",
+      "hyprland/window",
     ],
     "modules-center": ["clock"],
     "modules-right": [
@@ -24,19 +23,20 @@
       "tray",
       "custom/power",
     ],
-    "mango/workspaces": {
-      "format": "{index}",
-      "hide-empty": false,
+    "hyprland/workspaces": {
+      "format": "{id}",
+      "all-outputs": false,
+      "sort-by-number": true,
       "on-click": "activate",
-      "on-click-right": "toggle",
-      "overview-label": "OVERVIEW",
+      "persistent-workspaces": {
+        "DP-1": [1, 2, 3, 4, 5],
+        "DP-2": [6, 7, 8, 9],
+      },
     },
-    "mango/layout": {
-      "format": "󰕰 {}",
-    },
-    "mango/window": {
+    "hyprland/window": {
       "format": "{title}",
       "icon": false,
+      "separate-outputs": true,
     },
     "idle_inhibitor": {
       "format": "{icon}",
@@ -50,16 +50,15 @@
     "include": "/home/warice/.config/waybar/modules.jsonc",
   },
   {
-    "name": "mango-dell",
+    "name": "hyprland-dell",
     "output": "DP-2",
     "layer": "top",
     "height": 36,
     "spacing": 4,
     "modules-left": [
-      "mango/workspaces",
-      "mango/layout",
+      "hyprland/workspaces",
       "custom/pacman",
-      "mango/window",
+      "hyprland/window",
     ],
     "modules-center": ["clock"],
     "modules-right": [
@@ -73,19 +72,20 @@
       "tray",
       "custom/power",
     ],
-    "mango/workspaces": {
-      "format": "{index}",
-      "hide-empty": false,
+    "hyprland/workspaces": {
+      "format": "{id}",
+      "all-outputs": false,
+      "sort-by-number": true,
       "on-click": "activate",
-      "on-click-right": "toggle",
-      "overview-label": "OVERVIEW",
+      "persistent-workspaces": {
+        "DP-1": [1, 2, 3, 4, 5],
+        "DP-2": [6, 7, 8, 9],
+      },
     },
-    "mango/layout": {
-      "format": "󰕰 {}",
-    },
-    "mango/window": {
+    "hyprland/window": {
       "format": "{title}",
       "icon": false,
+      "separate-outputs": true,
     },
     "idle_inhibitor": {
       "format": "{icon}",

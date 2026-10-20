@@ -27,8 +27,8 @@ machine-local secrets are not installed.
 Both installers warn when tools used by the configuration are missing from the
 current `PATH`, including Zsh, Neovim, eza, fzf, ripgrep (`rg`), fd, lazygit,
 git-delta (`delta`), Node/npm, and native plugin build/download tools. The full
-installer also checks Oh My Posh and, on Linux, desktop tools such as swaylock,
-swayidle, Waybar, and the screenshot utilities. These warnings do not block
+installer also checks Oh My Posh and, on Linux, desktop tools such as Hyprland, Hyprlock,
+Hypridle, Hyprpaper, Waybar, and the screenshot utilities. These warnings do not block
 installation or install packages; install the tools for the features you use.
 Git and tar remain mandatory for the installer itself. These are availability
 checks, not version or complete plugin dependency checks. Shell plugins also
@@ -45,3 +45,18 @@ dotfiles add ~/.config/nvim
 dotfiles commit -m "Update Neovim configuration"
 dotfiles push
 ```
+
+## Hyprland desktop
+
+Native Lua configuration lives in `~/.config/hypr/hyprland.lua`, with separate
+modules for monitors, input, appearance, keybindings, and startup. The master
+layout puts the main window on the left and stacks other windows on the right.
+Waybar retains the existing styling and the workspace split: 1–5 on DP-1,
+6–9 on DP-2. Hyprlock, Hypridle, Hyprpaper, Hyprpicker, Hyprpolkitagent, and the
+Hyprland portal provide locking, idle handling, wallpaper, color picking,
+authentication dialogs, and screen sharing. Rofi, Mako, and CopyQ remain in use.
+
+Select the plain **Hyprland** session at login, or run `start-hyprland` from a
+TTY. The configuration starts its desktop helpers itself. See
+`.config/hypr/README.txt` for researched versions, sources, shortcuts, and
+validation instructions. The Lua configuration targets stable Hyprland 0.56.2.
