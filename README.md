@@ -52,7 +52,7 @@ Native Lua configuration lives in `~/.config/hypr/hyprland.lua`, with separate
 modules for monitors, input, appearance, keybindings, and startup. The master
 layout puts the main window on the left and stacks other windows on the right.
 Waybar retains the existing styling and the workspace split: 1–5 on DP-1,
-6–9 on DP-2. Hyprlock, Hypridle, Hyprpaper, Hyprpicker, Hyprpolkitagent, and the
+6–10 on DP-2. Hyprlock, Hypridle, Hyprpaper, Hyprpicker, Hyprpolkitagent, and the
 Hyprland portal provide locking, idle handling, wallpaper, color picking,
 authentication dialogs, and screen sharing. Rofi, Mako, and CopyQ remain in use.
 

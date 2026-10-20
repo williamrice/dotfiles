@@ -23,9 +23,11 @@ for key, delta in pairs({ H = { -45, 0 }, L = { 45, 0 }, K = { 0, -45 }, J = { 0
         dsp.window.resize({ x = delta[1], y = delta[2], relative = true }), { repeating = true })
 end
 
-for id = 1, 9 do
-    hl.bind("SUPER + " .. id, dsp.focus({ workspace = id }))
-    hl.bind("SUPER + SHIFT + code:" .. (id + 9), dsp.window.move({ workspace = id, follow = false }))
+for id = 1, 10 do
+    local key = id % 10
+    local keycode = id == 10 and 19 or id + 9
+    hl.bind("SUPER + " .. key, dsp.focus({ workspace = id }))
+    hl.bind("SUPER + SHIFT + code:" .. keycode, dsp.window.move({ workspace = id, follow = false }))
 end
 hl.bind("SUPER + SHIFT + comma", dsp.window.move({ monitor = "left", follow = true }))
 hl.bind("SUPER + SHIFT + period", dsp.window.move({ monitor = "right", follow = true }))

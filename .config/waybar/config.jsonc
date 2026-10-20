@@ -30,7 +30,7 @@
       "on-click": "activate",
       "persistent-workspaces": {
         "DP-1": [1, 2, 3, 4, 5],
-        "DP-2": [6, 7, 8, 9],
+        "DP-2": [6, 7, 8, 9, 10],
       },
     },
     "hyprland/window": {
@@ -79,7 +79,7 @@
       "on-click": "activate",
       "persistent-workspaces": {
         "DP-1": [1, 2, 3, 4, 5],
-        "DP-2": [6, 7, 8, 9],
+        "DP-2": [6, 7, 8, 9, 10],
       },
     },
     "hyprland/window": {

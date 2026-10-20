@@ -8,7 +8,7 @@ do not also enable the same helpers through UWSM or systemd.
 Configuration
   hyprland.lua    loads the modules with dofile so reload rereads every file
   appearance.lua master layout, green borders, 5/10px gaps, 6px rounding
-  monitors.lua   DP-1 1440p/180Hz, DP-2 1440p/165Hz; workspaces 1-5 / 6-9
+  monitors.lua   DP-1 1440p/180Hz, DP-2 1440p/165Hz; workspaces 1-5 / 6-10
   input.lua      US keyboard, repeat timing, trackpad, Qt environment
   bindings.lua   shortcuts and media keys
   autostart.lua  Waybar, Hypridle, Hyprpaper, Mako, CopyQ, Polkit, Sunshine
@@ -35,8 +35,8 @@ Shortcuts
   Super+H/J/K/L           focus left/down/up/right
   Super+Shift+H/J/K/L     swap windows
   Super+Alt+H/J/K/L       resize
-  Super+1..9              focus a workspace on its assigned monitor
-  Super+Shift+1..9        move window without following it
+  Super+1..9,0              focus a workspace on its assigned monitor
+  Super+Shift+1..9,0        move window without following it
   Super+Shift+, / .       move window to left/right monitor and follow
   Super+Ctrl+Return       swap focused window with master
   Super+[ / ]             decrease/increase master width by 5%
