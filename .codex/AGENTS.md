@@ -8,10 +8,10 @@
 
 ## Third-party dependency versions
 
-- Always research and verify the current latest stable and best-supported versions of every third-party library, package, tool, and GitHub Action before recommending, adding, selecting, or updating it. No exceptions. Consult official upstream releases and documentation; never rely only on memory or copied version numbers. If verification is blocked, request the required access rather than guessing.
-- Prefer the newest stable release, including a newer stable major version, when one exists. Do not use prereleases or nightly versions as substitutes for stable releases. Stable LTS versions are acceptable, but do not silently select an older LTS when a newer stable release is available.
-- If an older version is retained or proposed for compatibility, LTS support, reproducibility, or another reason, explicitly warn the user before using it. Identify the newest stable alternative and explain the concrete tradeoffs, support/security implications, and upgrade constraints.
-- Pin dependencies and GitHub Actions reproducibly to the researched version or its exact commit SHA where appropriate. Recheck upstream releases for each relevant task; never assume an existing pin is still current.
+- Follow the latest upstream versions by default. Do not add explicit version, tag, or commit pins unless the user requests them.
+- For Neovim plugins, use unversioned plugin definitions. The user evaluates and manages updates with fzf-pack.nvim; do not restrict plugins to stable release tags or introduce version constraints.
+- Preserve package-manager lockfiles as part of the normal update workflow; do not treat their recorded installed revisions as a reason to add explicit pins to dependency declarations.
+- Consult official upstream documentation when compatibility or API details need verification. Do not select an older version or impose a stable-release policy without the user's instruction.
 
 <!-- context7 -->
 Use Context7 MCP to fetch current documentation whenever the user asks about a library, framework, SDK, API, CLI tool, or cloud service — even well-known ones like React, Next.js, Prisma, Express, Tailwind, Django, or Spring Boot. This includes API syntax, configuration, version migration, library-specific debugging, setup instructions, and CLI tool usage. Use even when you think you know the answer — your training data may not reflect recent changes. Prefer this over web search for library docs.
