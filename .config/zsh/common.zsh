@@ -10,13 +10,18 @@ path=(
   $path
 )
 
-export EDITOR='nvim'
+export EDITOR=nvim
+export VISUAL=nvim
+export SUDO_EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
 if (( ! $+functions[nvm] )); then
   [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
   [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
 fi
+
+# Added by Antigravity CLI installer
+export PATH="/home/warice/.local/bin:$PATH"
 
 (( $+functions[antidote] )) && antidote load
 
