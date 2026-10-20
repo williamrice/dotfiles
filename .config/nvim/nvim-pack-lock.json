@@ -6,7 +6,7 @@
       "version": "'v2.5.0'"
     },
     "blink.cmp": {
-      "rev": "10198f904da1e7f77aeb0368414f871568c0d898",
+      "rev": "b72ed05dd452690181837d484984144a64709f17",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "'main'"
     },
@@ -28,7 +28,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "3f1f8cc30783ca905224eadebaa6ddfd73c28828",
+      "rev": "9d23575513f1d934c28b9f933b9dd680c0dcd9e3",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "fidget.nvim": {
@@ -36,19 +36,23 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "fzf-lua": {
-      "rev": "9405672f62767695d5f20db171336f7f4911ce86",
+      "rev": "a306c293b37bd7c8c1e8e1e6c0d7d3d9c3de3f21",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "fzf-pack.nvim": {
-      "rev": "cbc7c15f86fb78cc9fdf61ac490fcfef4dc92d91",
+      "rev": "9726aa490b63cb8e17a35d51cdf4c2ba2b732e1f",
       "src": "https://github.com/williamrice/fzf-pack.nvim"
     },
     "gitsigns.nvim": {
       "rev": "fd780920613e541cbdfac41bf711583ed49f9249",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "github-nvim-theme": {
+      "rev": "8db454eb272eabb349209ec62ceb63b8eea5f011",
+      "src": "https://github.com/projekt0n/github-nvim-theme"
+    },
     "grug-far.nvim": {
-      "rev": "11595bf747edc270bce2069d1020502ad4ae56cf",
+      "rev": "bbde8ef5ae46ceee2c3bd8b21fc048c5f8ffbfc0",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "image.nvim": {
@@ -108,7 +112,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "45a3a444b710511c39abca3b60bb6e23a21e3de5",
+      "rev": "77b7432d4770d23b277d37923e5a08a442d8bb07",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -120,11 +124,11 @@
       "src": "https://github.com/kylechui/nvim-surround"
     },
     "nvim-tree.lua": {
-      "rev": "355bcc85a48f45b3e728219f10b880d569928965",
+      "rev": "9a2e0006d42f292eb3ade7dfdff201a7429a780c",
       "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
-      "rev": "ca581c3436fc2b236847f5b739ebc263739e5ca6",
+      "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },

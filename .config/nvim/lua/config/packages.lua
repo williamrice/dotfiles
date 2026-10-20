@@ -54,6 +54,7 @@ vim.pack.add({
 	gh("nvim-tree/nvim-web-devicons"),
 	gh("nvim-treesitter/nvim-treesitter", { version = "main" }),
 	gh("nvim-treesitter/nvim-treesitter-textobjects", { version = "main" }),
+	gh("projekt0n/github-nvim-theme"),
 	gh("rcarriga/nvim-dap-ui"),
 	gh("saghen/blink.cmp", { version = "main" }),
 	gh("saghen/blink.lib", { version = "main" }),
