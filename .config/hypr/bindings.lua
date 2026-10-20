@@ -1,5 +1,7 @@
 local dsp = hl.dsp
 local home = os.getenv("HOME")
+local root = (os.getenv("XDG_CONFIG_HOME") or home .. "/.config") .. "/hypr/"
+local layout = dofile(root .. "layout.lua")
 local function launch(keys, command, flags)
     hl.bind(keys, dsp.exec_cmd(command), flags)
 end
@@ -26,24 +28,26 @@ end
 for id = 1, 10 do
     local key = id % 10
     local keycode = id == 10 and 19 or id + 9
-    hl.bind("SUPER + " .. key, dsp.focus({ workspace = id }))
-    hl.bind("SUPER + SHIFT + code:" .. keycode, dsp.window.move({ workspace = id, follow = false }))
+    hl.bind("SUPER + " .. key, dsp.focus({ workspace = id }), { description = "Focus workspace " .. id })
+    hl.bind("SUPER + SHIFT + code:" .. keycode, dsp.window.move({ workspace = id, follow = false }),
+        { description = "Move window to workspace " .. id })
 end
 hl.bind("SUPER + SHIFT + comma", dsp.window.move({ monitor = "left", follow = true }))
 hl.bind("SUPER + SHIFT + period", dsp.window.move({ monitor = "right", follow = true }))
 hl.bind("SUPER + mouse_down", dsp.focus({ workspace = "e+1" }))
 hl.bind("SUPER + mouse_up", dsp.focus({ workspace = "e-1" }))
-hl.bind("SUPER + mouse:272", dsp.window.drag(), { mouse = true })
-hl.bind("SUPER + mouse:273", dsp.window.resize(), { mouse = true })
+-- Native Lua drag/resize dispatchers track button release themselves.
+hl.bind("SUPER + mouse:272", dsp.window.drag())
+hl.bind("SUPER + mouse:273", dsp.window.resize())
 
 hl.bind("SUPER + grave", dsp.workspace.toggle_special("scratchpad"))
 hl.bind("SUPER + SHIFT + grave", dsp.window.move({ workspace = "special:scratchpad", follow = false }))
-hl.bind("SUPER + CTRL + Return", dsp.layout("swapwithmaster master"))
-hl.bind("SUPER + bracketleft", dsp.layout("mfact -0.05"))
-hl.bind("SUPER + bracketright", dsp.layout("mfact +0.05"))
--- These split controls apply after selecting dwindle in appearance.lua.
-hl.bind("SUPER + slash", dsp.layout("togglesplit"))
-hl.bind("SUPER + backslash", dsp.layout("swapsplit"))
+hl.bind("SUPER + CTRL + Return", layout.promote, { description = "Promote window to master/root" })
+hl.bind("SUPER + bracketleft", layout.shrink, { description = "Shrink master/focused split" })
+hl.bind("SUPER + bracketright", layout.grow, { description = "Grow master/focused split" })
+hl.bind("SUPER + slash", layout.rotate, { description = "Rotate master layout or toggle dwindle split" })
+hl.bind("SUPER + backslash", layout.mirror, { description = "Mirror master layout or swap dwindle split" })
+hl.bind("SUPER + Tab", layout.toggle, { description = "Toggle workspace between master and dwindle" })
 
 launch("SUPER + R", "hyprctl reload")
 launch("SUPER + SHIFT + R", "pkill -x waybar; exec waybar")

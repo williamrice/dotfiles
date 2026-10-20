@@ -11,6 +11,7 @@ Configuration
   monitors.lua   DP-1 1440p/180Hz, DP-2 1440p/165Hz; workspaces 1-5 / 6-10
   input.lua      US keyboard, repeat timing, trackpad, Qt environment
   rules.lua      Steam to 10, Discord to 6, Docker Desktop to 4
+  layout.lua     layout-aware split, ratio, promotion and layout switching
   bindings.lua   shortcuts and media keys
   autostart.lua  Waybar, Hypridle, Hyprpaper, Mako, CopyQ, Polkit, Sunshine
   hyprlock.conf  dark blue lock screen, Arch logo, clock and password field
@@ -21,7 +22,10 @@ Master layout
 The main window takes the left 55%; other windows stack vertically on the right.
 New windows become master, matching the previous desktop behavior.
 Set master.new_status to "slave" to keep the current main window instead.
-Set general.layout to "dwindle" in appearance.lua to use binary splits instead.
+Use Super+Tab for binary splits on just the current workspace. Set
+general.layout to "dwindle" in appearance.lua to change the default.
+Master split shortcuts affect the whole workspace; dwindle shortcuts affect
+the focused split. Both need tiled windows; a single window has no split.
 Manual locking also powers off displays; input wakes the locked display.
 Waybar's idle inhibitor prevents idle locking; explicit locking still works.
 No automatic system suspend is configured on this desktop.
@@ -39,8 +43,8 @@ Shortcuts
   Super+1..9,0              focus a workspace on its assigned monitor
   Super+Shift+1..9,0        move window without following it
   Super+Shift+, / .       move window to left/right monitor and follow
-  Super+Ctrl+Return       swap focused window with master
-  Super+[ / ]             decrease/increase master width by 5%
+  Super+Ctrl+Return       promote focused window to master (or dwindle root)
+  Super+[ / ]             decrease/increase master width or dwindle split ratio
   Super+grave             toggle scratchpad
   Super+Shift+grave       send window to scratchpad
   Super+R                 reload all Lua modules
@@ -52,7 +56,9 @@ Shortcuts
   Super+Shift+P           Hyprpicker, copy color
   Super+left/right drag   move/resize windows
   Super+mouse wheel       previous/next existing workspace
-  Super+/ and Super+\    dwindle split controls
+  Super+/                 rotate master layout, or toggle focused dwindle split
+  Super+\                 mirror master layout, or swap focused dwindle split
+  Super+Tab               toggle master/dwindle on the current workspace
 
 Versions verified against upstream stable releases
   Hyprland                    0.56.2
@@ -73,6 +79,9 @@ Research
   https://hypr.land/news/26_lua/
   https://wiki.hypr.land/Configuring/Start/
   https://wiki.hypr.land/Configuring/Layouts/Master-Layout/
+  https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/
+  https://github.com/hyprwm/Hyprland/blob/v0.56.2/src/config/lua/bindings/LuaBindingsDispatchers.cpp
+  https://github.com/hyprwm/Hyprland/blob/v0.56.2/src/layout/algorithm/tiled/master/MasterAlgorithm.cpp
   https://wiki.hypr.land/hypr-ecosystem/user/hypridle/
   https://wiki.hypr.land/hypr-ecosystem/user/hyprlock/
   https://wiki.hypr.land/hypr-ecosystem/user/hyprpaper/
@@ -87,5 +96,13 @@ Research
 
 Validation
   Hyprland --verify-config -c ~/.config/hypr/hyprland.lua
-Actual monitor placement, authentication, idle/suspend/wake, screen sharing,
-and Waybar need a real Hyprland login to validate end to end.
+Audited against the installed 0.56.2 Lua API and exact upstream release source.
+Live-tested Master rotation/mirroring, Dwindle split toggling/swapping, ratio
+controls in both layouts, and per-workspace layout switching. Original window
+geometry and focus were restored after testing. Startup uses hyprland.start;
+reloading configuration does not restart desktop helpers. Native Lua mouse
+handlers track button release internally; the ignored mouse=true option is
+omitted for this release. Logout exits Hyprland rather than terminating every
+session belonging to the user.
+Authentication, suspend/wake, screen sharing, and physical mouse gestures
+still require interactive end-to-end checks.
