@@ -20,9 +20,6 @@ if (( ! $+functions[nvm] )); then
   [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
 fi
 
-# Added by Antigravity CLI installer
-export PATH="/home/warice/.local/bin:$PATH"
-
 (( $+functions[antidote] )) && antidote load
 
 autoload -Uz compinit

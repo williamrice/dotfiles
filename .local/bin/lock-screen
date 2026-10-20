@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Swaylock -f returns only after the session is locked.
-# Serializing launch prevents two simultaneous idle/suspend/shortcut requests.
-exec 9>"${XDG_RUNTIME_DIR:?}/swaylock-launch.lock"
-flock 9
-if ! pgrep -u "$(id -u)" -x swaylock >/dev/null; then
-    /usr/bin/swaylock --config /home/warice/.config/swaylock/config --daemonize 9>&-
+
+# Hold the launch lock for the lifetime of the locker to serialize all callers.
+exec 9>"${XDG_RUNTIME_DIR:?}/hyprlock-launch.lock"
+flock -n 9 || exit 0
+if pgrep -u "$(id -u)" -x hyprlock >/dev/null; then
+    exit 0
 fi
-if [[ ${1:-} == --screen-off ]]; then
-    /usr/bin/wlr-dpms off
-fi
+exec /usr/bin/hyprlock --config "$HOME/.config/hypr/hyprlock.conf" --no-fade-in --grace 0
