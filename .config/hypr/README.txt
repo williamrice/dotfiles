@@ -10,6 +10,7 @@ Configuration
   appearance.lua master layout, green borders, 5/10px gaps, 6px rounding
   monitors.lua   DP-1 1440p/180Hz, DP-2 1440p/165Hz; workspaces 1-5 / 6-10
   input.lua      US keyboard, repeat timing, trackpad, Qt environment
+  rules.lua      Steam to 10, Discord to 6, Docker Desktop to 4
   bindings.lua   shortcuts and media keys
   autostart.lua  Waybar, Hypridle, Hyprpaper, Mako, CopyQ, Polkit, Sunshine
   hyprlock.conf  dark blue lock screen, Arch logo, clock and password field
