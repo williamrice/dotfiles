@@ -2,9 +2,10 @@
 
 ## Temporary directories and permission blocks
 
-- Never create a new temporary directory, including temporary repositories, clones, worktrees, caches, or test directories. Do not run scripts or tools that create new temporary directories.
-- When filesystem or network permissions block a task, ask for the required permission before proceeding. Do not relocate or duplicate the work into another directory as a workaround.
-- Keep work in the user's existing repository. Explain the exact blocked action and access needed rather than substituting a temporary copy.
+- Use temporary directories, caches, and test directories when they serve a legitimate tool or task requirement, such as package update checks, builds, downloads, or isolated tests. Routine authorized uses do not require extra confirmation solely because they create temporary or cache data.
+- Never create or relocate repositories, clones, worktrees, caches, or other working copies to bypass filesystem or network permissions, sandbox restrictions, or an approval requirement.
+- When filesystem or network permissions block a task, request the access required for the original action before proceeding. Explain the exact blocked action and access needed; do not substitute a temporary copy or another location as a workaround.
+- Keep project changes in the user's existing repository. Temporary artifacts may support the work, but must not replace the repository or evade its access controls. Clean up task-specific temporary artifacts when they are no longer needed; retain normal tool-managed caches when useful.
 
 ## Third-party dependency versions
 
