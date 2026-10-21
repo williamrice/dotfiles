@@ -70,8 +70,11 @@
     "modules": ["custom/system", "cpu", "memory", "custom/pacman", "idle_inhibitor"]
   },
   "custom/system": {
-    "format": "󰒓",
-    "tooltip-format": "System details\nHover for CPU, memory, updates and idle control"
+    "exec": "python3 ~/.config/waybar/updates.py gear",
+    "return-type": "json",
+    "interval": 60,
+    "format": "{}",
+    "on-click-right": "python3 ~/.config/waybar/updates.py gear --refresh > /dev/null"
   },
   "cpu": {
     "format": "󰻠 {usage}%",
@@ -84,11 +87,11 @@
     "tooltip-format": "Memory: {used:0.1f} / {total:0.1f} GiB"
   },
   "custom/pacman": {
-    // Read the existing package database; package synchronization stays manual.
-    "exec": "pacman -Qu | wc -l",
-    "interval": 1800,
+    "exec": "python3 ~/.config/waybar/updates.py count",
+    "return-type": "json",
+    "interval": 60,
     "format": "󰏗 {}",
-    "tooltip-format": "Available updates from the last package database sync"
+    "on-click-right": "python3 ~/.config/waybar/updates.py count --refresh > /dev/null"
   },
   "idle_inhibitor": {
     "format": "{icon}",
