@@ -8,7 +8,7 @@ fi
 
 # Show window titles and app IDs when configuring window rules.
 getwindows() {
-  swaymsg -t get_tree | grep -E '"app_id"|"name"'
+  hyprctl clients
 }
 
 alias update='yay -Syu'

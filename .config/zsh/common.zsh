@@ -11,7 +11,9 @@ path=(
   $path
 )
 
-export EDITOR='nvim'
+export EDITOR=nvim
+export VISUAL=nvim
+export SUDO_EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
 if (( ! $+functions[nvm] )); then

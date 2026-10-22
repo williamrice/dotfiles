@@ -69,7 +69,7 @@ button:hover {
   );
 }
 
-#mango-reload {
+#hyprland-reload {
   background-image: -gtk-icontheme('view-refresh-symbolic');
 }
 #waybar-restart {

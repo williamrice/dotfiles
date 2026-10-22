@@ -4,7 +4,7 @@ shell-integration = zsh
 # Font Settings
 font-family = "FiraCode Nerd Font Mono"
 font-size = 14
-theme = Carbonfox
+theme = GitHub Dark Default
 mouse-hide-while-typing = true
 
 # Window Settings
