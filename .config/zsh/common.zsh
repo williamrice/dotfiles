@@ -7,6 +7,7 @@ path=(
   "$HOME/.local/share/nvim/mason/bin"
   "$HOME/.local/bin"
   "$HOME/.lando/bin"
+	"$HOME/.dotnet/tools"
   $path
 )
 
