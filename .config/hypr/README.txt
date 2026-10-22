@@ -38,10 +38,15 @@ Install extra/inter-font and extra/noto-fonts-emoji from the official Arch repos
 Without Inter, text falls back to the already installed Noto Sans.
 Left: workspaces and a bounded window title. Center: time and date.
 Right: active media, weather, audio, network, system drawer, tray and power.
-Hover the gear for CPU, memory, cached package updates and the idle inhibitor.
+Hover the gear for CPU, memory, repository updates and the idle inhibitor.
+A red dot on the gear indicates available updates; right-click to refresh.
 Click audio for settings, right-click to mute, or scroll to change volume.
 Click power for the menu; right-click it to lock. Media hides when paused.
-Package counts use the existing pacman database and do not sync it automatically.
+checkupdates refreshes a separate repository database every ten minutes. Both
+bars share the result, and installed updates clear within one minute. Failed
+checks show an unknown or stale state instead of zero. Only official repository
+packages are counted. Occupied workspaces use bright, bold numbers; empty
+workspaces remain muted.
 Module order lives in waybar/config.jsonc; options in waybar/modules.jsonc;
 panel colors and transparency in waybar/style.css.
 

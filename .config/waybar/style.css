@@ -77,6 +77,12 @@ button:hover {
 
 #workspaces button.empty {
   color: #627e98;
+  font-weight: 400;
+}
+
+#workspaces button:not(.empty):not(.active) {
+  color: @foreground;
+  font-weight: bold;
 }
 
 #workspaces button.visible {
@@ -183,4 +189,22 @@ window#waybar.empty #window {
 
 #idle_inhibitor.activated {
   color: @accent;
+}
+
+#custom-system.updates {
+  background-image: radial-gradient(circle, #ff6b7a 0%, #ff6b7a 55%, transparent 65%);
+  background-repeat: no-repeat;
+  background-position: 90% 25%;
+  background-size: 7px 7px;
+}
+
+#custom-pacman.updates {
+  color: @foreground;
+}
+
+#custom-system.error,
+#custom-system.stale,
+#custom-pacman.error,
+#custom-pacman.stale {
+  color: @warning;
 }
