@@ -1,4 +1,7 @@
 require("fzf-lua").setup({
+	files = {
+		git_icons = true,
+	},
 	lsp = {
 		code_actions = {
 			previewer = "codeaction_native",

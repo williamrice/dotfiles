@@ -1,5 +1,6 @@
 require("gitsigns").setup({
 	worktrees = require("config.dotfiles").worktrees(),
+	attach_to_untracked = true,
 	current_line_blame = false,
 	word_diff = false,
 	on_attach = function(bufnr)

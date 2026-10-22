@@ -43,13 +43,13 @@
       "rev": "9726aa490b63cb8e17a35d51cdf4c2ba2b732e1f",
       "src": "https://github.com/williamrice/fzf-pack.nvim"
     },
-    "gitsigns.nvim": {
-      "rev": "fd780920613e541cbdfac41bf711583ed49f9249",
-      "src": "https://github.com/lewis6991/gitsigns.nvim"
-    },
     "github-nvim-theme": {
       "rev": "8db454eb272eabb349209ec62ceb63b8eea5f011",
       "src": "https://github.com/projekt0n/github-nvim-theme"
+    },
+    "gitsigns.nvim": {
+      "rev": "fd780920613e541cbdfac41bf711583ed49f9249",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
       "rev": "bbde8ef5ae46ceee2c3bd8b21fc048c5f8ffbfc0",
