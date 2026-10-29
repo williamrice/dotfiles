@@ -149,6 +149,13 @@ for path in README.md install.sh install-lite.sh; do
   fi
 done
 
+# Docker Desktop is launched manually rather than with the graphical session.
+if [ "$(uname -s)" = Linux ] && command -v systemctl >/dev/null 2>&1; then
+  if systemctl --user cat docker-desktop.service >/dev/null 2>&1; then
+    systemctl --user disable docker-desktop.service
+  fi
+fi
+
 say 'Full dotfiles configuration installed.'
 if [ -d "$backup_dir" ]; then
   say "Previous files were copied to $backup_dir"
