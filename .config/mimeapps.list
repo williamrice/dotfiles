@@ -10,6 +10,7 @@ application/sql=code.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 application/vnd.iccprofile=code.desktop
 x-scheme-handler/bruno=bruno.desktop
+image/png=firefox-developer-edition.desktop
 
 [Added Associations]
 text/csv=libreoffice-calc.desktop;code.desktop;
