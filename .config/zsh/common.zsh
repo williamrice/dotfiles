@@ -21,6 +21,17 @@ if (( ! $+functions[nvm] )); then
   [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
 fi
 
+export HF_HOME="$HOME/models/huggingface"
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
+# Bind Insert after zsh-vi-mode initializes its keymaps.
+zvm_after_init_commands+=(
+  'zvm_bindkey viins "^[[2~" edit-command-line'
+  'zvm_bindkey vicmd "^[[2~" edit-command-line'
+)
+
 (( $+functions[antidote] )) && antidote load
 
 autoload -Uz compinit
