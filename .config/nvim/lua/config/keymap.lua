@@ -32,6 +32,34 @@ map("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Close tab" })
 map("n", "<leader>q", "<cmd>bp|bd #<cr>", { desc = "Close buffer" })
 map("n", "<leader>tp", "<cmd>BufferLinePick<cr>", { desc = "Pick buffer" })
 map("n", "<leader>tc", "<cmd>BufferLinePickClose<cr>", { desc = "Pick buffer to close" })
+
+local terminal_buf
+local function toggle_terminal()
+	local tab = vim.api.nvim_get_current_tabpage()
+	if terminal_buf and vim.api.nvim_buf_is_valid(terminal_buf) then
+		for _, win in ipairs(vim.fn.win_findbuf(terminal_buf)) do
+			if vim.api.nvim_win_get_tabpage(win) == tab then
+				if #vim.api.nvim_tabpage_list_wins(tab) == 1 then
+					vim.cmd("hide enew")
+				else
+					vim.api.nvim_win_hide(win)
+				end
+				return
+			end
+		end
+		vim.cmd("botright 12split")
+		vim.api.nvim_win_set_buf(0, terminal_buf)
+	else
+		vim.cmd("botright 12new")
+		vim.cmd.terminal()
+		terminal_buf = vim.api.nvim_get_current_buf()
+		vim.bo[terminal_buf].bufhidden = "hide"
+	end
+	vim.cmd.startinsert()
+end
+
+map({ "n", "t" }, "<C-`>", toggle_terminal, { desc = "Toggle bottom terminal" })
+map("n", "<leader>tt", toggle_terminal, { desc = "Toggle bottom terminal" })
 map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous buffer" })
 
